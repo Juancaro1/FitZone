@@ -1,0 +1,93 @@
+*{
+    font-family: Calibri, sans serif;
+    margin: 0;
+    padding: 0;
+}
+|
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header{
+    background-color: #8ad16d;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.top h1{
+    font-size: 40px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+.top a{
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+}
+
+.formulario-registro{
+    border: 2px solid rgb(1, 182, 182);
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: #F5FFF5;
+    height: auto;
+    width: 400px;
+    gap: 10px;
+    padding: 10px 0px 20px 0px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px black;
+}
+input {
+    border-radius: 10px;
+    border-color: #e0e0e0;
+    background-color: #ffff;
+}
+select{
+    border-radius: 10px;
+    margin: 10px;
+    width: 20%;
+}
+.formulario-registro label{
+    margin-left: 2%;
+    margin-top: auto;
+}
+
+.formulario-registro input{
+    max-width: 93%;
+    margin-left: 2%;
+    padding: 5px;
+}
+
+.enviar{
+    border: 2px solid rgb(1, 182, 182);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #8ad16d;
+    border-radius: 10px;
+    width: 120px;
+}
+
+.enviar:hover{
+    background-color: #6da756;
+}

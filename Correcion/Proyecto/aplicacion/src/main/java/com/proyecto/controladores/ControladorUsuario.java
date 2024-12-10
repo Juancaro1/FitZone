@@ -65,4 +65,6 @@ public class ControladorUsuario {
         sesion.setAttribute("idUsuario", usuario2.getId());
         return "redirect:/localizaciones";
     }
+
+    
 }

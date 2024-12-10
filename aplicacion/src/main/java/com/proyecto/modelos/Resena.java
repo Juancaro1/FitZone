@@ -1,11 +1,15 @@
+
 package com.proyecto.modelos;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 @Entity
 @Table(name = "resenas")
@@ -14,42 +18,59 @@ public class Resena {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Debes ingresar al menos la puntuación.")
-    private int puntuacion;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
+
+    @Min(value = 0, message =  "La puntuacion minima es de 0.")
+    @Max(value = 5, message = "La puntuacion maxima es de 5.")
+    private Integer puntuacion;
 
     private String comentario;
-    // más atributos por ver según trello.
 
-    public Resena(Long id, @NotBlank(message = "Debes ingresar al menos la puntuación.") int puntuacion,
-            String comentario) {
-        this.id = id;
-        this.puntuacion = puntuacion;
-        this.comentario = comentario;
-    }
-    public Resena() {
-        this.id = 0l;
-        this.puntuacion = 0;
-        this.comentario = "";
-}
+
     public Long getId() {
-        return id;
+        return this.id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public int getPuntuacion() {
-        return puntuacion;
+
+    public Usuario getUsuario() {
+        return this.usuario;
     }
-    public void setPuntuacion(int puntuacion) {
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Integer getPuntuacion() {
+        return this.puntuacion;
+    }
+
+    public void setPuntuacion(Integer puntuacion) {
         this.puntuacion = puntuacion;
     }
+
     public String getComentario() {
-        return comentario;
+        return this.comentario;
     }
+
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
 
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", usuario='" + getUsuario() + "'" +
+            ", puntuacion='" + getPuntuacion() + "'" +
+            ", comentario='" + getComentario() + "'" +
+            "}";
+    }
 
 
 }

@@ -39,7 +39,6 @@ public class Resena {
     public Resena() {
     }
 
-
     public Long getId() {
         return this.id;
     }

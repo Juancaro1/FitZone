@@ -66,14 +66,7 @@ public class Localizacion {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public Resena getComentarios() {
-        return comentarios;
-    }
-    public void setComentarios(Resena comentarios) {
-        this.comentarios = comentarios;
-    }
-    
-    
 
+    
 
 }

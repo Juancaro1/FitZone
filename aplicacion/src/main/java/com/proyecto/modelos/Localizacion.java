@@ -40,8 +40,6 @@ public class Localizacion {
         this.resenas = null;
     }
 
-
-
     public List<Resena> getResenas() {
         return this.resenas;
     }

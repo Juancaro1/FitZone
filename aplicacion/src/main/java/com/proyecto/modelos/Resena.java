@@ -37,6 +37,10 @@ public class Resena {
     }
 
     public Resena() {
+        this.id = 0l;
+        this.usuario = null;
+        this.puntuacion = 0;
+        this.comentario = "";
     }
 
 

@@ -29,6 +29,17 @@ public class Resena {
     private String comentario;
 
 
+    public Resena(Long id, Usuario usuario, Integer puntuacion, String comentario) {
+        this.id = id;
+        this.usuario = usuario;
+        this.puntuacion = puntuacion;
+        this.comentario = comentario;
+    }
+
+    public Resena() {
+    }
+
+
     public Long getId() {
         return this.id;
     }

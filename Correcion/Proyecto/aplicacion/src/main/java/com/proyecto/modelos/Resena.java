@@ -21,11 +21,22 @@ public class Resena {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @Min(value = 0, message =  "La puntuacion minima es de 0.")
-    @Max(value = 5, message = "La puntuacion maxima es de 5.")
-    private Integer puntuacion;
+    @Min(value = 0, message = "La puntuacion debe ser al menos 0.")
+    @Max(value = 5, message = "La puntuacion no puede ser mayor a 5.")
+    private int puntuacion;
 
     private String comentario;
+
+
+    public Resena(Long id, Usuario usuario, int puntuacion, String comentario) {
+        this.id = id;
+        this.usuario = usuario;
+        this.puntuacion = puntuacion;
+        this.comentario = comentario;
+    }
+
+    public Resena() {
+    }
 
 
     public Long getId() {
@@ -44,11 +55,11 @@ public class Resena {
         this.usuario = usuario;
     }
 
-    public Integer getPuntuacion() {
+    public int getPuntuacion() {
         return this.puntuacion;
     }
 
-    public void setPuntuacion(Integer puntuacion) {
+    public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
     }
 
@@ -70,6 +81,5 @@ public class Resena {
             ", comentario='" + getComentario() + "'" +
             "}";
     }
-
 
 }

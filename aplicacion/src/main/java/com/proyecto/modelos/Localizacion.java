@@ -1,9 +1,12 @@
 package com.proyecto.modelos;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -21,21 +24,32 @@ public class Localizacion {
     @NotBlank(message = "Debes ingresar una dirección para la localización.")
     private String direccion;
 
-    // @OnetoMany o @ManytoOne
-    private Resena comentarios;
+    @OneToMany(mappedBy = "localizacion")
+    private List<Resena> resenas;
 
-    public Localizacion(Long id,  String nombre, String direccion, Resena comentarios) {
+    public Localizacion(Long id,  String nombre, String direccion, List<Resena> resenas) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
-        this.comentarios = comentarios;
+        this.resenas = resenas;
     }
     public Localizacion() {
         this.id = 0l;
         this.nombre = "";
         this.direccion = "";
-        this.comentarios = null;
+        this.resenas = null;
     }
+
+
+
+    public List<Resena> getResenas() {
+        return this.resenas;
+    }
+
+    public void setResenas(List<Resena> resenas) {
+        this.resenas = resenas;
+    }
+
     public Long getId() {
         return id;
     }

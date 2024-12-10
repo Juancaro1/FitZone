@@ -1,10 +1,13 @@
 package com.proyecto.modelos;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
@@ -36,17 +39,26 @@ public class Usuario {
     @Size(min = 8, message= "Debe contener al menos 8 caracteres.")
     private String clave;
 
+    @NotBlank(message= "Este campo es obligatorio.")
+    @Size(min = 3, message = "Debe contener al menos 3 caracteres.")
+    private String genero;
+
     @Transient
     private String confirmarClave;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Resena> resenas;
 
-    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave) {
+
+    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.clave = clave;
         this.confirmarClave = confirmarClave;
+        this.resenas = resenas;
+        this.genero = genero;
     }
 
     public Usuario() {
@@ -56,8 +68,19 @@ public class Usuario {
         this.email = "";
         this.clave = "";
         this.confirmarClave = "";
+        this.resenas = null;
+        this.genero = "";
     }
 
+
+
+    public String getGenero() {
+        return this.genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 
     public Long getId() {
         return this.id;
@@ -108,16 +131,14 @@ public class Usuario {
     }
 
 
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", nombre='" + getNombre() + "'" +
-            ", apellido='" + getApellido() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", clave='" + getClave() + "'" +
-            ", confirmarClave='" + getConfirmarClave() + "'" +
-            "}";
+    public List<Resena> getResenas() {
+        return this.resenas;
     }
+
+    public void setResenas(List<Resena> resenas) {
+        this.resenas = resenas;
+    }
+
+
 
 }

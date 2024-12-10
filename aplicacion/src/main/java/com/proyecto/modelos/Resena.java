@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "resenas")
@@ -26,14 +27,20 @@ public class Resena {
     @Max(value = 5, message = "La puntuacion maxima es de 5.")
     private Integer puntuacion;
 
+    @NotBlank(message= "Este campo es obligatorio.")
     private String comentario;
 
+    @ManyToOne
+    @JoinColumn(name = "localizacion_id")
+    private Localizacion localizaciones;
 
-    public Resena(Long id, Usuario usuario, Integer puntuacion, String comentario) {
+
+    public Resena(Long id, Usuario usuario, Integer puntuacion, String comentario, Localizacion localizaciones) {
         this.id = id;
         this.usuario = usuario;
         this.puntuacion = puntuacion;
         this.comentario = comentario;
+        this.localizaciones = localizaciones;
     }
 
     public Resena() {
@@ -41,7 +48,18 @@ public class Resena {
         this.usuario = null;
         this.puntuacion = 0;
         this.comentario = "";
+        this.localizaciones = null;
     }
+
+
+    public Localizacion getLocalizaciones() {
+        return this.localizaciones;
+    }
+
+    public void setLocalizaciones(Localizacion localizaciones) {
+        this.localizaciones = localizaciones;
+    }
+
 
     public Long getId() {
         return this.id;

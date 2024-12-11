@@ -13,90 +13,90 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-import com.patricio.modelos.Ubicacion;
-import com.patricio.servicios.ServicioUbicacion;
+import com.patricio.modelos.Localizacion;
+import com.patricio.servicios.ServicioLocalizaciones;
 import com.patricio.servicios.ServicioUsuarios;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
-public class ControladorPinturas {
+public class ControladorLocalizaciones {
 
 	@Autowired
 	private ServicioUsuarios servicioUsuarios;
 	
 	@Autowired
-	private ServicioUbicacion ServicioUbicacion;
+	private ServicioLocalizaciones servicioLocalizaciones;
 	
-	@GetMapping("/ubicaciones")
-	public String ubicaciones(HttpSession sesion, Model modelo) {
+	@GetMapping("/localizaciones")
+	public String localizaciones(HttpSession sesion, Model modelo) {
 		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
 		if (idUsuario == null) {
 			return "redirect:/login";
 		}
-		List<Ubicacion> ubicaciones = this.servicioUbicacion.obtenerTodas();
-		modelo.addAttribute("ubicaciones", ubicaciones);
+		List<Localizacion> localizaciones = this.servicioLocalizaciones.obtenerTodas();
+		modelo.addAttribute("localizaciones", localizaciones);
 		modelo.addAttribute("usuario", this.servicioUsuarios.obtenerUsuarioPorId(idUsuario));
-		return "ubicaciones.jsp";
+		return "localizaciones.jsp";
 	}
 	
-	@GetMapping("/ubicaciones/detalle/{id}")
-	public String detalleUbicacion(HttpSession sesion, Model modelo,
+	@GetMapping("/localizaciones/detalle/{id}")
+	public String detalleLocalizacion(HttpSession sesion, Model modelo,
 			@PathVariable("id") Long id) {
 		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
 		if (idUsuario == null) {
 			return "redirect:/login";
 		}
 		
-		Ubicacion ubicacion = null;
+		Localizacion localizacion = null;
 		try {
-			ubicacion = this.servicioubicacions.obtenerUbicacionPorId(id);
+			localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
 			modelo.addAttribute("usuario", this.servicioUsuarios.obtenerUsuarioPorId(idUsuario));
-			modelo.addAttribute("ubicacion", ubicacion);
+			modelo.addAttribute("localizacion", localizacion);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "detalleUbicacion.jsp";
+		return "detalleLocalizacion.jsp";
 	}
 	
-	@GetMapping("/ubicaciones/agregar")
-	public String agregarUbicacion(HttpSession sesion, Model modelo) {
+	@GetMapping("/localizaciones/agregar")
+	public String agregarLocalizacion(HttpSession sesion, Model modelo) {
 		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
 		if (idUsuario == null) {
 			return "redirect:/login";
 		}
-		modelo.addAttribute("ubicacion", new Ubicacion());
-		return "agregarUbicacion.jsp";
+		modelo.addAttribute("localizacion", new Localizacion());
+		return "agregarLocalizacion.jsp";
 	}
 	
 	@PostMapping("/guardar")
-	public String guardarUbicacion(HttpSession sesion,
-			@Valid @ModelAttribute("ubicacion") Ubicacion ubicacion,
+	public String guardarLocalizacion(HttpSession sesion,
+			@Valid @ModelAttribute("localizacion") Localizacion localizacion,
 			BindingResult validaciones) {
 		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
 		if (idUsuario == null) {
-			return "redirect:/regloginister";
+			return "redirect:/login";
 		}
-		this.servicioUbicacion.crearUbicacion(ubicacion);
-		return "redirect:/ubicaciones";
+		this.servicioLocalizacion.crearLocalizacion(localizacion);
+		return "redirect:/localizaciones";
 	}
 	
-	@GetMapping("/pinturas/editar/{id}")
-	public String editarUbicacion(HttpSession sesion, Model modelo,
-			@ModelAttribute("ubicacion") Ubicacion ubicacion,
+	@GetMapping("/localizaciones/editar/{id}")
+	public String editarLocalizacion(HttpSession sesion, Model modelo,
+			@ModelAttribute("localizacion") Localizacion localizacion,
 			@PathVariable("id") Long id) {
 		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
 		if (idUsuario == null) {
 			return "redirect:/login";
 		}
-		modelo.addAttribute("ubicacion", this.servicioUbicacion.obtenerUbicacionPorId(id));
-		return "editarUbicacion.jsp";
+		modelo.addAttribute("localizacion", this.servicioLocalizacion.obtenerLocalizacionPorId(id));
+		return "editarLocalizacion.jsp";
 	}
 	
 	@PutMapping("/editar/{id}")
-	public String procesarEditarPintura(HttpSession sesion, Model modelo,
-			@Valid @ModelAttribute("ubicacion") Ubicacion ubicacion,
+	public String procesarEditarLocalizacion(HttpSession sesion, Model modelo,
+			@Valid @ModelAttribute("localizacion") Localizacion localizacion,
 			BindingResult validaciones) {
 		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
 		if (idUsuario == null) {
@@ -104,22 +104,22 @@ public class ControladorPinturas {
 		}
 	
 		if(validaciones.hasErrors()) {
-			modelo.addAttribute("ubicacion", ubicacion);
-			return "editarUbicacion.jsp";
+			modelo.addAttribute("localizacion", localizacion);
+			return "editarLocalizacion.jsp";
 		}
-		servicioUbicacion.agregarUbicacion(ubicacion);
-		return "redirect:/ubicaciones";
+		servicioLocalizacion.agregarLocalizacion(localizacion);
+		return "redirect:/localizaciones";
 	}
 	
-	@DeleteMapping("/eliminar/{idUbicacion}")
-	public String procesarEliminarPintura(HttpSession sesion,
-			@PathVariable("idUbicacion") Long idPintura) {
+	@DeleteMapping("/eliminar/{idLocalizacion}")
+	public String procesarEliminarLocalizacion(HttpSession sesion,
+			@PathVariable("idLocalizacion") Long idLocalizacion) {
 		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
 		if (idUsuario == null) {
 			return "redirect:/login";
 		}
-		servicioPinturas.eliminar(idUbicacion);
-		return "redirect:/ubicaciones";
+		servicioLocalizaciones.eliminar(idLocalizacion);
+		return "redirect:/localizaciones";
 	}
 	
 }

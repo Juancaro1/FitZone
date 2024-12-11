@@ -31,7 +31,7 @@ public class Resena {
     private String comentario;
 
     @ManyToOne
-    @JoinColumn(name = "localizacion_id", nullable = false)
+    @JoinColumn(name = "id_localizacion", nullable = false)
     private Localizacion localizaciones;
 
 

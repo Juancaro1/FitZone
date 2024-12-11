@@ -15,7 +15,7 @@ public class ServicioLocalizaciones {
     @Autowired 
     private RepositorioLocalizaciones repositorioLocalizaciones;
 
-    public Localizacion crearLocalizacion(Localizacion localizacion, Long idUsuario){
+    public Localizacion crearLocalizacion(Localizacion localizacion){
         return repositorioLocalizaciones.save(localizacion);
     }
 

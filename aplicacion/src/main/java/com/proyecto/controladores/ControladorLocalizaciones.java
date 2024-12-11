@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 public class ControladorLocalizaciones {
 
 	@Autowired
-	private ServicioUsuarios servicioUsuarios;
+	private ServiciosUsuarios serviciosUsuarios;
 	
 	@Autowired
 	private ServicioLocalizaciones servicioLocalizaciones;
@@ -37,7 +37,7 @@ public class ControladorLocalizaciones {
 		}
 		List<Localizacion> localizaciones = this.servicioLocalizaciones.obtenerTodas();
 		modelo.addAttribute("localizaciones", localizaciones);
-		modelo.addAttribute("usuario", this.servicioUsuarios.obtenerUsuarioPorId(idUsuario));
+		modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerUsuarioPorId(idUsuario));
 		return "localizaciones.jsp";
 	}
 	
@@ -52,7 +52,7 @@ public class ControladorLocalizaciones {
 		Localizacion localizacion = null;
 		try {
 			localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
-			modelo.addAttribute("usuario", this.servicioUsuarios.obtenerUsuarioPorId(idUsuario));
+			modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerUsuarioPorId(idUsuario));
 			modelo.addAttribute("localizacion", localizacion);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class ControladorLocalizaciones {
 		if (idUsuario == null) {
 			return "redirect:/login";
 		}
-		modelo.addAttribute("localizacion", this.servicioLocalizacion.obtenerLocalizacionPorId(id));
+		modelo.addAttribute("localizacion", this.servicioLocalizaciones.obtenerLocalizacionPorId(id));
 		return "editarLocalizacion.jsp";
 	}
 	
@@ -107,7 +107,7 @@ public class ControladorLocalizaciones {
 			modelo.addAttribute("localizacion", localizacion);
 			return "editarLocalizacion.jsp";
 		}
-		servicioLocalizacion.agregarLocalizacion(localizacion);
+		servicioLocalizaciones.agregarLocalizacion(localizacion);
 		return "redirect:/localizaciones";
 	}
 	

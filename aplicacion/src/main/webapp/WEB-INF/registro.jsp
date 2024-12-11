@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>Registro</h2>
-	<form:form action = "/registrarUsuario" method = "POST" modelAttribute = "usuario">
+	<form:form action = "/register" method = "POST" modelAttribute = "usuario">
 		<div>
 			<form:label path = "nombre">Nombre:</form:label>
 			<form:input type = "text" path = "nombre"/>
@@ -23,9 +23,6 @@
 			<form:input type = "text" path = "email"/>
 			<form:errors cssClass = "email" path = "email"/>
 
-            <form:label path = "apellido">Apellido:</form:label>
-			<form:input type = "text" path = "apellido"/>
-			<form:errors path = "apellido"/>
 			
 			<form:label path = "clave">Contraseña:</form:label>
 			<form:input type = "password" path = "clave"/>

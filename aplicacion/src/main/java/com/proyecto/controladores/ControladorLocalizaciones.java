@@ -1,4 +1,4 @@
-package com.patricio.controladores;
+package com.proyecto.controladores;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-import com.patricio.modelos.Localizacion;
-import com.patricio.servicios.ServicioLocalizaciones;
-import com.patricio.servicios.ServicioUsuarios;
+import com.proyecto.modelos.Localizacion;
+import com.proyecto.servicios.ServicioLocalizaciones;
+import com.proyecto.servicios.ServiciosUsuarios;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;

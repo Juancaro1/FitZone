@@ -15,19 +15,19 @@ public class ServicioLocalizaciones {
     @Autowired 
     private RepositorioLocalizaciones repositorioLocalizaciones;
 
-    public Ubicacion crearUbicacion(Ubicacion ubicacion, Long idUsuario){
-        return repositorioLocalizaciones.save(ubicacion);
+    public Localizacion crearLocalizacion(Localizacion localizacion, Long idUsuario){
+        return repositorioLocalizaciones.save(localizacion);
     }
 
     public List<Localizacion> obtenerTodas(){
         return (List<Localizacion>) this.repositorioLocalizaciones.findAll();
     }
     
-    public Resena obtenerLocalizacionPorId(Long id){
+    public Localizacion obtenerLocalizacionPorId(Long id){
         return this.repositorioLocalizaciones.findById(id).orElse(null);
     }
 
-    public Resena actualizarLocalizacion(Long id, Localizacion localizacion){
+    public Localizacion actualizarLocalizacion(Long id, Localizacion localizacion){
         return this.repositorioLocalizaciones.save(localizacion);
     }
 

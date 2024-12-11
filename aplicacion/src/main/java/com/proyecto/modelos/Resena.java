@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "resenas")
@@ -27,11 +27,11 @@ public class Resena {
     @Max(value = 5, message = "La puntuacion maxima es de 5.")
     private Integer puntuacion;
 
-    @NotBlank(message= "Este campo es obligatorio.")
+    
     private String comentario;
 
     @ManyToOne
-    @JoinColumn(name = "localizacion_id")
+    @JoinColumn(name = "localizacion_id", nullable = false)
     private Localizacion localizaciones;
 
 

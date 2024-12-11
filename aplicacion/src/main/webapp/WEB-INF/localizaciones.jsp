@@ -13,7 +13,7 @@
 			<a href = "/localizaciones/detalle/${localizacion.id}">Detalle localizaciones</a>
 				<li><h3>${localizacion.titulo}</h3></li>
 				<li><p>Año:</p><b>${localizacion.direccion}</b></li>
-				<a href = "/localizaciones/editar/${localizacion.id}"></a>
+				<a href = "/localizaciones/editar/${localizacion.id}">editar localizacion</a>
 			</ul>
 		</div>
 	</c:forEach>

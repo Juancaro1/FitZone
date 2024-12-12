@@ -24,7 +24,7 @@ public class Localizacion {
     @NotBlank(message = "Debes ingresar una dirección para la localización.")
     private String direccion;
 
-    @OneToMany(mappedBy = "localizacion")
+    @OneToMany(mappedBy = "localizaciones")
     private List<Resena> resenas;
 
     public Localizacion(Long id,  String nombre, String direccion, List<Resena> resenas) {

@@ -8,7 +8,9 @@
 <title>Ubicacion</title>
 </head>
 <body>
+	<h1>Localizaciones disponibles:</h1>
 	<c:forEach var = "localizacion" items = "${localizaciones}">
+		
 		<div>
 			<a href = "/localizaciones/detalle/${localizacion.id}">Detalle localizaciones</a>
 				<li><h3>${localizacion.titulo}</h3></li>

@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+	crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+	crossorigin=""></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,15 +14,26 @@
 </head>
 <body>
 	<h1>Localizaciones disponibles:</h1>
-	<c:forEach var = "localizacion" items = "${localizaciones}">
+
+
+	<div id="map" style="width: 600px; height: 400px;"></div>
+
+	<script>
+		var map = L.map('map').setView([-36.82, -73.03], 13);
+		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+
+		function onMapClick(e) {
+			var marker = L.marker(mouseEventToLatLng(e).addTo(map));
+		}
+
+		map.on('click', function(ev) {
+			var marker = L.marker(ev.latlng).addTo(map);
+		});
 		
-		<div>
-			<a href = "/localizaciones/detalle/${localizacion.id}">Detalle localizaciones</a>
-				<li><h3>${localizacion.titulo}</h3></li>
-				<li><p>Año:</p><b>${localizacion.direccion}</b></li>
-				<a href = "/localizaciones/editar/${localizacion.id}">editar localizacion</a>
-			</ul>
-		</div>
-	</c:forEach>
+	</script>
+
 </body>
 </html>

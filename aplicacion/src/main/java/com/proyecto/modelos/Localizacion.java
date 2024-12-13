@@ -24,10 +24,14 @@ public class Localizacion {
     @NotBlank(message = "Debes ingresar una dirección para la localización.")
     private String direccion;
 
+    private float cordX;
+
+    private float cordY;
+    
     @OneToMany(mappedBy = "localizaciones")
     private List<Resena> resenas;
 
-    public Localizacion(Long id,  String nombre, String direccion, List<Resena> resenas) {
+    public Localizacion(Long id,  String nombre, String direccion, List<Resena> resenas, float cordX, float cordY) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -38,6 +42,24 @@ public class Localizacion {
         this.nombre = "";
         this.direccion = "";
         this.resenas = null;
+        this.cordX = 0;
+        this.cordY = 0;
+    }
+
+    public void setCordX(float cordX){
+        this.cordX = cordX;
+    }
+
+    public float getCordX(){
+        return this.cordX;
+    }
+
+    public void setCordY(float cordY){
+        this.cordY = cordY;
+    }
+
+    public float getCordY(){
+        return this.cordY;
     }
 
     public List<Resena> getResenas() {

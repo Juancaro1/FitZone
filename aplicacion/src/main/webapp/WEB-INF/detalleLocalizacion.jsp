@@ -22,8 +22,8 @@ crossorigin=""></script>
 
 	<script>
 
-        var coordX = parseFloat('${cordX}');
-        var coordY = parseFloat("${cordY}");
+        var coordX = parseFloat('${localizacion.cordX}');
+        var coordY = parseFloat("${localizacion.cordY}");
 
 		var map = L.map('map').setView([coordX, coordY], 13);
 		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,6 +38,7 @@ crossorigin=""></script>
 		map.on('click', function(ev) {
 			var marker = L.marker(ev.latlng).addTo(map);
 		});*/
+		
         var marker = L.marker([coordX, coordY]).addTo(map);
 		
 	</script>

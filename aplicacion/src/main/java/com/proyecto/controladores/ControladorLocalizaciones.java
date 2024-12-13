@@ -35,8 +35,8 @@ public class ControladorLocalizaciones {
 		if (idUsuario == null) {
 			return "redirect:/login";
 		}
-		//List<Localizacion> localizaciones = this.servicioLocalizaciones.obtenerTodas();
-		//modelo.addAttribute("localizaciones", localizaciones);
+		List<Localizacion> localizaciones = this.servicioLocalizaciones.obtenerTodas();
+		modelo.addAttribute("localizaciones", localizaciones);
 		modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(idUsuario));
 		return "localizaciones.jsp";
 	}
@@ -54,8 +54,6 @@ public class ControladorLocalizaciones {
 			localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
 			modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(idUsuario));
 			modelo.addAttribute("localizacion", localizacion);
-			modelo.addAttribute("cordX", localizacion.getCordX());
-			modelo.addAttribute("cordY", localizacion.getCordY());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

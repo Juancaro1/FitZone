@@ -16,6 +16,10 @@ crossorigin=""></script>
 </head>
 <body>
 	<h2>Agregar Localizacion</h2>
+	<nav>
+		<ul><a href="/localizaciones">Localizaciones</a></ul>
+		<ul><a href="/logout">Cerrar Sesion</a></ul>
+	</nav>
 	
 	<form:form action = "/guardar" method = "POST" modelAttribute = "localizacion">
 		<div>

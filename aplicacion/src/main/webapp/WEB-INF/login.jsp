@@ -9,6 +9,11 @@
 </head>
 <body>
 	<h2>Login</h2>
+	<nav>
+		<ul>
+			<li><a href="/">Registrarse</a></ul>
+		</ul>
+	</nav>
 	<form:form action = "/procesa/login" method = "POST" modelAttribute = "loginUsuario">
 		<div>
 			<form:label path = "email">Correo:</form:label>

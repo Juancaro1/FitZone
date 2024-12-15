@@ -67,7 +67,7 @@ public class ControladorLocalizaciones {
 			return "redirect:/login";
 		}
 		modelo.addAttribute("localizacion", new Localizacion());
-		return "agregarLocalizacion.jsp";
+		return "agregarLocalizaciones.jsp";
 	}
 	
 	@PostMapping("/guardar")
@@ -91,7 +91,7 @@ public class ControladorLocalizaciones {
 			return "redirect:/login";
 		}
 		modelo.addAttribute("localizacion", this.servicioLocalizaciones.obtenerLocalizacionPorId(id));
-		return "editarLocalizacion.jsp";
+		return "editarLocalizaciones.jsp";
 	}
 	
 	@PutMapping("/editar/{id}")
@@ -105,7 +105,7 @@ public class ControladorLocalizaciones {
 	
 		if(validaciones.hasErrors()) {
 			modelo.addAttribute("localizacion", localizacion);
-			return "editarLocalizacion.jsp";
+			return "editarLocalizaciones.jsp";
 		}
 		servicioLocalizaciones.crearLocalizacion(localizacion);
 		return "redirect:/localizaciones";

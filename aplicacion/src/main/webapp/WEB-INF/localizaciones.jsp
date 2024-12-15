@@ -13,6 +13,14 @@
 <title>Ubicacion</title>
 </head>
 <body>
+	<nav>
+		<ul>
+			<li><a href="/localizaciones/agregar">Agregar Localización</a></ul>
+			<li><a href="/logout">Cerrar Sesion</a></li>
+		</ul>
+	</nav>
+	
+	
 	<h1>Localizaciones disponibles:</h1>
 
 

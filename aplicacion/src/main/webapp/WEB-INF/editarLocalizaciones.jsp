@@ -11,6 +11,11 @@
 <title>Editar Localizacion</title>
 </head>
 <body>
+	<nav>
+		<ul><a href="/localizaciones/agregar">Agregar Localización</a></ul>
+		<ul><a href="/logout">Cerrar Sesion</a></ul>
+		<ul><a href="/localizaciones">Editar Localizacion</a></ul>
+	</nav>
 	<h2>Editar Localizacion</h2>
 	
 	<form:form action = "/editar/${localizacion.id}" method = "POST" modelAttribute = "localizacion">

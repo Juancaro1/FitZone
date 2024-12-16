@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>Login</h2>
-	<form:form action = "/validarSesion" method = "POST" modelAttribute = "loginUsuario">
+	<form:form action = "/procesa/login" method = "POST" modelAttribute = "loginUsuario">
 		<div>
 			<form:label path = "email">Correo:</form:label>
 			<form:input type = "text" path = "email"/>

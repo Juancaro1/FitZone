@@ -1,93 +1,231 @@
-*{
-    font-family: Calibri, sans serif;
+/* General */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-|
-body{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
 }
 
-header{
-    background-color: #8ad16d;
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-}
 
-.top {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-    gap: 10px;
-}
-
-.top h1{
-    font-size: 40px;
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-}
-
-.top a{
-    font-size: 25px;
-    font-weight: bold;
+a {
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
 
-.contenedor{
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar */
+nav {
+    background-color: #228B22; /* Verde */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 65px;
+}
+
+nav img{
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+}
+
+.marca{
+    margin-left: -72%;
+    font-size: 40px;
+}
+
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+
+nav a {
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+/* Sección Principal */
+section {
+    text-align: center;
+    padding: 20px;
+}
+
+.foto-perfil {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid #f0f0f0;
+    margin-bottom: 10px;
+}
+
+.editar-perfil{
+    background-color: lightgrey;
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+span {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Menú de Pestañas */
+section ul {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+section ul li a {
+    margin: 0 15px;
+    font-weight: bold;
+    color: #999;
+    padding-bottom: 5px;
+}
+
+section ul li a:hover,
+section ul li a.active {
+    color: #228B22; /* Verde */
+    border-bottom: 2px solid #228B22;
+}
+
+/* Contenido de Visitas */
+h4 {
+    margin: 20px 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+section p {
+    color: #555;
+    font-size: 14px;
+    margin: 10px auto 20px;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+/* Imagen del Mapa */
+section img {
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Botón Ir al Mapa */
+.boton-ir-mapa {
+    display: block;
+    margin: 15px auto;
+    background-color: #228B22;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 150px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-ir-mapa:hover {
+    background-color: #1c6b1c;
+}
+
+/* Preferencias */
+.preferencias {
+    display: inline-block;
+    background-color: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 10px 5px;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #ccc;
+}
+
+a.boton-preferencia {
+    display: inline-block;
+    background-color: #eaeaea;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #777;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+a.boton-preferencia:hover {
+    background-color: #d5d5d5;
+}
+
+/* Footer */
+footer {
+    background-color: #228B22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+footer ul {
     display: flex;
     justify-content: center;
 }
 
-.formulario-registro{
-    border: 2px solid rgb(1, 182, 182);
+footer ul li {
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.contactos{
+    font-size: 18px;
+    margin-top: 7px;
+}
+
+footer a.logo-facebook::before,
+footer a.logo-instagram::before {
+    content: "";
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    background-color: #F5FFF5;
-    height: auto;
-    width: 400px;
-    gap: 10px;
-    padding: 10px 0px 20px 0px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 15px black;
-}
-input {
-    border-radius: 10px;
-    border-color: #e0e0e0;
-    background-color: #ffff;
-}
-select{
-    border-radius: 10px;
-    margin: 10px;
-    width: 20%;
-}
-.formulario-registro label{
-    margin-left: 2%;
-    margin-top: auto;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.formulario-registro input{
-    max-width: 93%;
-    margin-left: 2%;
-    padding: 5px;
+footer a.logo-facebook::before {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png'); /* Cambia la URL */
 }
 
-.enviar{
-    border: 2px solid rgb(1, 182, 182);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 20px;
-    padding: 5px;
-    background-color: #8ad16d;
-    border-radius: 10px;
-    width: 120px;
+footer a.logo-instagram::before {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/018/930/413/original/instagram-logo-instagram-icon-transparent-free-png.png'); /* Cambia la URL */
 }
 
-.enviar:hover{
-    background-color: #6da756;
-}

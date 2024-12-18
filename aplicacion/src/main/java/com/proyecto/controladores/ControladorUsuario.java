@@ -24,13 +24,13 @@ public class ControladorUsuario {
     @GetMapping("/")
     public String formRegistro(Model modelo){
         modelo.addAttribute("usuario", new Usuario());
-        return "registro.jsp";
+        return "registro";
     }
 
     @GetMapping("/login")
     public String formLogin(Model modelo){
         modelo.addAttribute("loginUsuario", new LoginUsuario());
-        return "login.jsp";
+        return "login";
     }
     
     @GetMapping("/logout")
@@ -44,7 +44,7 @@ public class ControladorUsuario {
         this.serviciosUsuarios.validarLogin(validaciones, loginUsuario);
         if(validaciones.hasErrors()){
             //modelo.addAttribute("loginUsuario", new LoginUsuario());
-            return "login.jsp";
+            return "login";
         }
         Usuario usuario = this.serviciosUsuarios.obtenerPorEmail(loginUsuario.getEmail());
         sesion.setAttribute("nombreCompleto", usuario.getNombre() + " " + usuario.getApellido());
@@ -58,7 +58,7 @@ public class ControladorUsuario {
         this.serviciosUsuarios.validarRegistro(validaciones, usuario);
         if(validaciones.hasErrors()){
             // modelo.addAttribute("usuario", new Usuario());
-            return "registro.jsp";
+            return "registro";
         }
 
         Usuario usuario2 = this.serviciosUsuarios.crearUsuario(usuario);

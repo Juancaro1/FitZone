@@ -38,7 +38,7 @@ public class ControladorLocalizaciones {
 		List<Localizacion> localizaciones = this.servicioLocalizaciones.obtenerTodas();
 		modelo.addAttribute("localizaciones", localizaciones);
 		modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(idUsuario));
-		return "localizaciones.jsp";
+		return "localizaciones";
 	}
 	
 	@GetMapping("/localizaciones/detalle/{id}")
@@ -57,7 +57,7 @@ public class ControladorLocalizaciones {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "detalleLocalizacion.jsp";
+		return "detalleLocalizacion";
 	}
 	
 	@GetMapping("/localizaciones/agregar")
@@ -67,7 +67,7 @@ public class ControladorLocalizaciones {
 			return "redirect:/login";
 		}
 		modelo.addAttribute("localizacion", new Localizacion());
-		return "agregarLocalizaciones.jsp";
+		return "agregarLocalizaciones";
 	}
 	
 	@PostMapping("/guardar")
@@ -105,7 +105,7 @@ public class ControladorLocalizaciones {
 	
 		if(validaciones.hasErrors()) {
 			modelo.addAttribute("localizacion", localizacion);
-			return "editarLocalizaciones.jsp";
+			return "editarLocalizaciones";
 		}
 		servicioLocalizaciones.crearLocalizacion(localizacion);
 		return "redirect:/localizaciones";

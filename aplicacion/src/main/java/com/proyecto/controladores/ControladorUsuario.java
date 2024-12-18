@@ -52,7 +52,7 @@ public class ControladorUsuario {
         return "redirect:/localizaciones";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register")// para procesar el registro
     public String registro(@Valid @ModelAttribute("usuario") Usuario usuario, Model modelo, HttpSession sesion, BindingResult validaciones){
         System.out.println(usuario.toString());
         this.serviciosUsuarios.validarRegistro(validaciones, usuario);

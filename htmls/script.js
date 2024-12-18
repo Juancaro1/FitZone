@@ -1,52 +1,58 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Elementos del DOM
-    const modal = document.getElementById('editar-perfil-modal');
-    const editarPerfilBtn = document.querySelector('.editar-perfil'); // Botón para abrir el modal
-    const cancelarBtn = document.getElementById('cancelar-editar-perfil'); // Botón para cerrar el modal
-    const formEditarPerfil = document.getElementById('form-editar-perfil'); // Formulario de edición
+// Obtener los elementos del DOM
+const modal = document.getElementById('editar-perfil-modal');
+const btnEditar = document.querySelector('.editar-perfil');  // Botón de editar perfil
+const btnCancelar = document.getElementById('cancelar-editar-perfil');  // Botón de cancelar
 
-    // Mostrar el modal al hacer clic en "Editar Perfil"
-    editarPerfilBtn.addEventListener('click', (e) => {
-        e.preventDefault(); // Evita que el enlace recargue la página
-        modal.style.display = 'flex'; // Cambia a "flex" para mostrar el modal
-    });
+// Función para mostrar el modal
+function mostrarModal() {
+    modal.style.display = 'flex';
+}
 
-    // Ocultar el modal al hacer clic en "Cancelar"
-    cancelarBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+// Función para ocultar el modal
+function ocultarModal() {
+    modal.style.display = 'none';
+}
 
-    // Opcional: Ocultar el modal al hacer clic fuera del contenido
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
+// Mostrar el modal cuando se haga clic en "Editar Perfil"
+btnEditar.addEventListener('click', function(e) {
+    e.preventDefault();  // Prevenir la acción por defecto del enlace
+    mostrarModal();
+});
 
-    // Procesar el envío del formulario
-    formEditarPerfil.addEventListener('submit', (e) => {
-        e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+// Ocultar el modal cuando se haga clic en "Cancelar"
+btnCancelar.addEventListener('click', ocultarModal);
 
-        // Obtener los valores ingresados
-        const nombre = document.getElementById('nombre').value.trim();
-        const apellido = document.getElementById('apellido').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
+// Opcional: Cerrar el modal si se hace clic fuera del contenido del modal
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        ocultarModal();
+    }
+});
 
-        // Validar los datos (opcional, puedes agregar más validaciones)
-        if (!nombre || !apellido || !email || !password) {
-            alert('Por favor, completa todos los campos.');
-            return;
-        }
+// Formulario de "Editar Perfil"
+const form = document.getElementById('form-editar-perfil');
+form.addEventListener('submit', function(e) {
+    e.preventDefault();  // Prevenir el envío del formulario
 
-        // Simulación de guardado (puedes integrar con una API o backend aquí)
-        console.log('Datos guardados:', { nombre, apellido, email, password });
-        alert('Perfil actualizado correctamente.');
+    // Aquí puedes agregar la lógica para manejar el formulario, por ejemplo:
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const sobreMi = document.getElementById('sobreMi').value;
+    const fotoPerfil = document.getElementById('foto-perfil').files[0];
 
-        // Ocultar el modal
-        modal.style.display = 'none';
+    // Simulamos un guardado de datos (por ejemplo, podrías enviarlos a un servidor)
+    console.log('Datos guardados: ', { nombre, apellido, sobreMi, fotoPerfil });
 
-        // Opcional: Actualizar los datos mostrados en la página principal
-        // Aquí podrías actualizar el DOM con los datos nuevos si es necesario
-    });
+    // Cerrar el modal después de guardar los cambios
+    ocultarModal();
+    
+    // Limpiar el formulario
+    form.reset();
+});
+
+// Si se hace clic fuera del formulario (pero dentro del modal), cerramos el modal
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        ocultarModal();
+    }
 });

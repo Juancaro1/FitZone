@@ -20,11 +20,6 @@ ul {
     margin: 0;
 }
 
-.nombre-usuario{
-    font-size: 15px;
-    color: black;
-}
-
 /* Navbar */
 nav {
     background-color: #228B22; /* Verde */
@@ -37,9 +32,10 @@ nav {
 }
 
 nav img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     background-color: transparent;
+    margin-right: 20px;
 }
 
 .marca {
@@ -238,6 +234,7 @@ footer a.logo-facebook {
 footer a.logo-instagram {
     background-image: url('https://static.vecteezy.com/system/resources/previews/018/930/413/original/instagram-logo-instagram-icon-transparent-free-png.png');
 }
+
 /* Modal para Editar Perfil */
 #editar-perfil-modal {
     position: fixed;

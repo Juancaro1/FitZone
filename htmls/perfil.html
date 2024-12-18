@@ -8,9 +8,9 @@
 </head>
 <body>
     <nav>
+        <img src="/htmls/Diseño sin título.png" alt="FitZone Logo">
+        <h1 class="marca">FitZone</h1>
         <ul>
-            <li><img src="" alt="FitZone Logo"></li>
-            <li> FitZone</li>
             <li><a href="#">Añadir Spot</a></li>
             <li><a href="#">Localizaciones</a></li>
             <li><a href="#">Logout</a></li>
@@ -19,14 +19,16 @@
     </nav>
     <section >
         <img class="foto-perfil" src="/htmls/perfil.png" alt="Foto de Perfil">
+        <p class="nombre-usuario">Nombre Usuario</p>
         <span>[x] Spots Visitados</span>
+        <a class="editar-perfil" href="#">Editar Perfil</a>
         <ul>
             <li><a href="#">Sobre mi</a></li>
             <li><a href="#">Visitas</a></li>
             <li><a href="#">Preferencias</a></li>
         </ul>
-        <h4>Visitas[0]</h4>
-            <p>Cuando visites un lugar te lo mostraremos aquí revisa el mapa y descubre nuevos lugares</p>
+        <h4>Spot agregados por ti</h4>
+            <p>Cuando agregues un lugar te lo mostraremos aquí, revisa el mapa y descubre nuevos lugares</p>
             <img src="/htmls/mapa.jpg" alt="Mapa">
             <a class="boton-ir-mapa" href="#">Ir al Mapa</a>
         <h4>Preferencias</h4>
@@ -36,10 +38,32 @@
     </section>
     <footer>
         <ul>
-            <li>Contacto</li>
+            <li class="contactos">Contacto</li>
             <li><a href="#" class="logo-facebook"></a></li>
             <li><a href="#" class="logo-instagram"></a></li>
         </ul>
     </footer>
+    <section id="editar-perfil-modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Editar Perfil</h2>
+            <form id="form-editar-perfil">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+    
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
+                
+                <label for="sobreMi">Sobre mi:</label>
+                <input type="textarea">
+
+                <label for="subirImagen">Cambiar Foto de Perfil:</label>
+                <input type="file" name="foto-perfil" id="foto-perfil">
+    
+                <button type="submit">Guardar Cambios</button>
+                <button type="button" id="cancelar-editar-perfil">Cancelar</button>
+            </form>
+        </div>
+    </section>
+    <script src="/htmls/script.js"></script>
 </body>
 </html>

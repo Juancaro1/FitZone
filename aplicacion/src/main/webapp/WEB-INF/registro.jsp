@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,11 @@
 		</div>
 =======
 	<form:form action="/register" method="POST" modelAttribute="usuario">
+		<nav>
+			<ul>
+				<li><a href="/login">Iniciar Sesión</a></ul>
+			</ul>
+		</nav>
 		
 		<form:label path="nombre">Nombre:</form:label>
 		<form:input path="nombre" type="text" />

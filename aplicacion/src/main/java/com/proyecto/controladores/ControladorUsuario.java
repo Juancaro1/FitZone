@@ -33,7 +33,7 @@ public class ControladorUsuario {
         return "login.jsp";
     }
     
-    @GetMapping("logout")
+    @GetMapping("/logout")
     public String logOut(HttpSession sesion){
         sesion.invalidate();
         return "redirect:/login";
@@ -43,7 +43,7 @@ public class ControladorUsuario {
     public String login(@Valid @ModelAttribute ("loginUsuario") LoginUsuario loginUsuario, BindingResult validaciones, Model modelo, HttpSession sesion){
         this.serviciosUsuarios.validarLogin(validaciones, loginUsuario);
         if(validaciones.hasErrors()){
-            modelo.addAttribute("loginUsuario", new LoginUsuario());
+            //modelo.addAttribute("loginUsuario", new LoginUsuario());
             return "login.jsp";
         }
         Usuario usuario = this.serviciosUsuarios.obtenerPorEmail(loginUsuario.getEmail());
@@ -54,9 +54,10 @@ public class ControladorUsuario {
 
     @PostMapping("/register")// para procesar el registro
     public String registro(@Valid @ModelAttribute("usuario") Usuario usuario, Model modelo, HttpSession sesion, BindingResult validaciones){
+        System.out.println(usuario.toString());
         this.serviciosUsuarios.validarRegistro(validaciones, usuario);
         if(validaciones.hasErrors()){
-            modelo.addAttribute("usuario", new Usuario());
+            // modelo.addAttribute("usuario", new Usuario());
             return "registro.jsp";
         }
 

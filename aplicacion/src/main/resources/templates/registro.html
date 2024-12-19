@@ -8,10 +8,15 @@
 <body>
 	<h2>Registro</h2>
 	<nav>
-		<ul>
-			<li><a href="/login">Iniciar Sesión</a></ul>
-		</ul>
-	</nav>
+        <img src="/htmls/Diseño sin título.png" alt="FitZone Logo">
+        <h1 class="marca">FitZone</h1>
+        <ul>
+			<li><a href="/login">Login</a></li>
+            <li><a href="#">Añadir Spot</a></li>
+            <li><a href="#">Localizaciones</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
 	<form th:action="@{/register}" method="POST" th:object="${usuario}">
 		
 		<label for="nombre">Nombre:</label>

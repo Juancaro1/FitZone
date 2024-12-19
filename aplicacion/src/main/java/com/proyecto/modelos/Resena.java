@@ -25,17 +25,17 @@ public class Resena {
 
     @Min(value = 0, message =  "La puntuacion minima es de 0.")
     @Max(value = 5, message = "La puntuacion maxima es de 5.")
-    private Integer puntuacion;
+    private int puntuacion;
 
     
     private String comentario;
 
     @ManyToOne
-    @JoinColumn(name = "localizacion_id", nullable = false)
+    @JoinColumn(name = "id_localizacion", nullable = false)
     private Localizacion localizaciones;
 
 
-    public Resena(Long id, Usuario usuario, Integer puntuacion, String comentario, Localizacion localizaciones) {
+    public Resena(Long id, Usuario usuario, int puntuacion, String comentario, Localizacion localizaciones) {
         this.id = id;
         this.usuario = usuario;
         this.puntuacion = puntuacion;
@@ -77,11 +77,11 @@ public class Resena {
         this.usuario = usuario;
     }
 
-    public Integer getPuntuacion() {
+    public int getPuntuacion() {
         return this.puntuacion;
     }
 
-    public void setPuntuacion(Integer puntuacion) {
+    public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
     }
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Iniciar Sesión</title>
+</head>
+<body>
+<h2>Login</h2>
+<form th:action="@{/procesa/login}" method="POST" th:object="${loginUsuario}">
+    <div>
+        <label for="email">Correo:</label>
+        <input type="text" id="email" name="email" th:field="*{email}"/>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+        <label for="clave">Contraseña:</label>
+        <input type="password" id="clave" name="clave" th:field="*{clave}"/>
+        <div th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}"></div>
+
+        <input type="submit" value="Login"/>
+    </div>
+</form>
+</body>
+</html>

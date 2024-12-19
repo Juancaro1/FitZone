@@ -1,14 +1,14 @@
-
-<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-	crossorigin=""/>
-	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-	crossorigin=""></script> -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/css/styles.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
 <title>Ubicacion</title>
 </head>
 <body>
@@ -19,12 +19,18 @@
 		</ul>
 	</nav>
 	
+	<div th:each="localizacion : ${localizaciones}">
+        <h2 th:text="${localizacion.nombre}">Localización</h2>
+        <p th:text="${localizacion.direccion}">Dirección</p>
+		<p style = "display:none" class="cordx" th:text="${localizacion.cordX}"></p>
+		<p style = "display:none" class="cordy" th:text="${localizacion.cordY}"></p>
+		
+    </div>
+
+	<div id="map" style="width: 500px; height: 400px;"></div>
 	
-	<h1>Localizaciones disponibles:</h1>
-		<h2>Localización 1</h2>
-		<h2>Localización 2</h2>
-		<h2>Localización 3</h2>
-		<h2>Localización 4</h2>
-		<h2>Localización 5</h2>
+	<script th:src="@{/js/localizaciones.js}"></script>
+	<h1 id="a">A</h1>
+
 </body>
 </html>

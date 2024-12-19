@@ -30,7 +30,7 @@ public class ControladorResena {
         }
         List<Resena> resenas = this.servicioResena.obtenerTodasLasResenas();
         modelo.addAttribute("resenas", resenas);
-        return "resenas.jsp";
+        return "resenas";
     } 
 
     @GetMapping("/crear")// para crear la resena
@@ -38,7 +38,7 @@ public class ControladorResena {
         if(sesion.getAttribute("usuario") == null){
             return "redirect:/login";
         }
-        return "crearResena.jsp";
+        return "crearResena";
     }
 
     @PostMapping("/procesa/crear")// para procesar el crear resena
@@ -61,7 +61,7 @@ public class ControladorResena {
         }
         Resena resena = this.servicioResena.obtenerResenaPorId(id);
         modelo.addAttribute("resena", resena);
-        return "detalleResena.jsp";
+        return "detalleResena";
     }
 
     @GetMapping("/resenas/editar/{id}")// Mostrara el formulario para editar una resena
@@ -72,7 +72,7 @@ public class ControladorResena {
 
         Resena resena = this.servicioResena.obtenerResenaPorId(id);
         modelo.addAttribute("resena", resena);
-        return "editarResena.jsp";
+        return "editarResena";
     }
 
     @PostMapping("/procesa/editar/{id}")
@@ -98,7 +98,7 @@ public class ControladorResena {
             this.servicioResena.eliminarResena(id);
             return "redirect:/resenas";
         }else{
-            return "detalleResena.jsp";
+            return "detalleResena";
         }
     }
 

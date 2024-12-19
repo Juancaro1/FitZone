@@ -23,10 +23,10 @@ crossorigin=""></script>
 			<label for="nombre">Nombre:</label>
             <input type="text" id="nombre" th:field="*{nombre}" class="form-control"/>
             <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-text"></span>
-		
-            <label for="direccion">Direccion:</label>
-            <input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
-            <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
+			
+				<label for="direccion">Direccion:</label>
+				<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
+				<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
 			
 			
 			<span>Ubicala en el mapa: </span>
@@ -37,5 +37,6 @@ crossorigin=""></script>
 			<script th:src="@{/js/index.js}"></script>
 		</div>
 	</form:form>
+	<h1 id="a">a</h1>
 </body>
 </html>

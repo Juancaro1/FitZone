@@ -11,7 +11,7 @@
 	<groupId>com.proyecto</groupId>
 	<artifactId>aplicacion</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Canciones</name>
+	<name>Proyecto</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -76,8 +76,11 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
+		<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

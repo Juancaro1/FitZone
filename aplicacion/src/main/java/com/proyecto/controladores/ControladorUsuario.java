@@ -47,6 +47,12 @@ public class ControladorUsuario {
             return "login";
         }
         Usuario usuario = this.serviciosUsuarios.obtenerPorEmail(loginUsuario.getEmail());
+        if (usuario == null) {
+            modelo.addAttribute("error", "Usuario no encontrado");
+        }
+
+        sesion.setAttribute("emailUsuario", usuario.getEmail());
+
         sesion.setAttribute("nombreCompleto", usuario.getNombre() + " " + usuario.getApellido());
         sesion.setAttribute("idUsuario", usuario.getId());
         return "redirect:/localizaciones";

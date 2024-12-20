@@ -23,21 +23,21 @@
     <form th:action="@{/guardar}" method="POST" th:object="${localizacion}">
 		<div>
 			<label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" th:field="*{nombre}" class="form-control"/>
-            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-text"></span>
-			
-				<label for="direccion">Direccion:</label>
-				<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
-				<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
-			
-			
-			<span>Ubicala en el mapa: </span>
-            <!--probando api-->
+			<input type="text" id="nombre" th:field="*{nombre}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-text"></span>
+	
+			<label for="direccion">Dirección:</label>
+			<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
+	
+			<span>Ubica la localización en el mapa:</span>
 			<div id="map" style="width: 500px; height: 400px;"></div>
 	
 			<input type="submit" value="Agregar"/>
 		</div>
-	</form:form>
-	<h1 id="a">a</h1>
+	</form>
+
+    <!-- Enlazar el archivo JavaScript -->
+    <script th:src="@{/js/index.js}"></script>
 </body>
 </html>

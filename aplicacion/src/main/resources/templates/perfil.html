@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
-    <link rel="stylesheet" href="/aplicacion/src/main/resources/static/css/StylePerfil.css">
+    <link rel="stylesheet" href="/StylePerfil.css">
 </head>
 <body>
     <nav>
-        <img src="/aplicacion/src/main/resources/static/img/Diseño sin título.png" alt="FitZone Logo">
+        <img src="@{/img/Diseño sin título.png}" alt="FitZone Logo">
         <h1 class="marca">FitZone</h1>
         <ul>
-            <li><a href="#">Añadir Spot</a></li>
-            <li><a href="#">Localizaciones</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="/localizaciones/agregar">Añadir Spot</a></li>
+            <li><a href="/localizaciones">Localizaciones</a></li>
+            <li><a href="/logout">Logout</a></li>
         </ul>
     </nav>
 
     <section>
-        <img class="foto-perfil" src="/aplicacion/src/main/resources/static/img/perfil.png" alt="Foto de Perfil">
+        <img class="foto-perfil" src="src/main/resources/static/img/perfil.png" alt="Foto de Perfil">
         <p class="nombre-usuario" th:text="${nombreUsuario}">Nombre Usuario</p> 
         <a class="editar-perfil" href="#">Editar Perfil</a>
 
@@ -31,7 +31,7 @@
         <h4>Spots agregados por ti</h4>
         <p>Cuando agregues un lugar te lo mostraremos aquí, revisa el mapa y descubre nuevos lugares</p>
         
-        <img src="/aplicacion/src/main/resources/static/img/mapa.jpg" alt="Mapa">
+        <img src="src/main/resources/static/img/mapa.jpg" alt="Mapa">
 
         <a class="boton-ir-mapa" href="#">Ir al Mapa</a>
 
@@ -69,6 +69,6 @@
         </div>
     </section>
 
-    <script src="/aplicacion/src/main/resources/static/js/Perfil.js"></script>
+    <script src="@{/js/Perfil.js}"></script>
 </body>
 </html>

@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="/css/styles.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-crossorigin=""></script>
-<title>Agregar Localizacion</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    <title>Agregar Localización</title>
 </head>
 <body>
-	<h2>Agregar Localizacion</h2>
-	<nav>
-		<li><a href="/localizaciones">Localizacines</a></li>
-		<li><a href="/logout">Cerrar sesión</a></li>
-	</nav>
-	
-	<form th:action = "@{/guardar}" method = "POST" th:object = "${localizacion}">
+    <h2>Agregar Localización</h2>
+    <nav>
+        <ul>
+            <li><a href="/localizaciones">Localizaciones</a></li>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+    
+    <form th:action="@{/guardar}" method="POST" th:object="${localizacion}">
 		<div>
 			<label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" th:field="*{nombre}" class="form-control"/>
-            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-text"></span>
-			
-				<label for="direccion">Direccion:</label>
-				<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
-				<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
-			
-			
-			<span>Ubicala en el mapa: </span>
-            <!--probando api-->
+			<input type="text" id="nombre" th:field="*{nombre}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-text"></span>
+	
+			<label for="direccion">Dirección:</label>
+			<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
+	
+			<span>Ubica la localización en el mapa:</span>
 			<div id="map" style="width: 500px; height: 400px;"></div>
-		
-			<input type = "submit" value = "Agregar"/>
-			<script th:src="@{/js/index.js}"></script>
+	
+			<input type="submit" value="Agregar"/>
 		</div>
-	</form:form>
-	<h1 id="a">a</h1>
+	</form>
+
+    <!-- Enlazar el archivo JavaScript -->
+    <script th:src="@{/js/index.js}"></script>
 </body>
 </html>

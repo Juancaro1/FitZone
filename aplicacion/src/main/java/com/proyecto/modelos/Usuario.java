@@ -41,8 +41,9 @@ public class Usuario {
 
     @NotBlank(message= "Este campo es obligatorio.")
     @Size(min = 3, message = "Debe contener al menos 3 caracteres.")
+
     private String genero;
-    private String sobremi;
+
     private String preferencia;
     @Transient
     private String confirmarClave;
@@ -62,7 +63,6 @@ public class Usuario {
         this.confirmarClave = confirmarClave;
         this.resenas = resenas;
         this.genero = genero;
-        this.sobremi = sobremi;
         this.preferencia = preferencia;
         
     }
@@ -76,7 +76,6 @@ public class Usuario {
         this.confirmarClave = "";
         this.resenas = null;
         this.genero = "";
-        this.sobremi = "";
         this.preferencia = "";
     }
 
@@ -155,13 +154,6 @@ public class Usuario {
         this.resenas = resenas;
     }
 
-    public String getSobremi() {
-        return sobremi;
-    }
-
-    public void setSobremi(String sobremi) {
-        this.sobremi = sobremi;
-    }
 
     public String getPreferencia() {
         return preferencia;

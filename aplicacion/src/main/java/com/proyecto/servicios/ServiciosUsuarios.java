@@ -43,6 +43,10 @@ public class ServiciosUsuarios {
         this.repositorioUsuarios.deleteById(id);
     }
 
+    public void eliminarUsuarioPorEmail(String email){
+        this.repositorioUsuarios.findByEmail(email);
+    }
+
     //Validamos en el registro si coinciden las contrasenas 
 	public BindingResult validarRegistro(BindingResult validaciones, Usuario usuario) {
 		if(!usuario.getClave().equals(usuario.getConfirmarClave())) {

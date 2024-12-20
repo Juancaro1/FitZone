@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,5 +72,18 @@ public class ControladorUsuario {
         sesion.setAttribute("nombreCompleto", usuario2.getNombre() + " " + usuario2.getApellido());
         sesion.setAttribute("idUsuario", usuario2.getId());
         return "redirect:/localizaciones";
+    }
+
+    @DeleteMapping("/perfil/eliminar/")
+    // ELIMINAR UN USUARIO
+    public String eliminarusuario(HttpSession sesion) {
+        String emailUsuario = (String) sesion.getAttribute("emailUsuario");
+
+        if(emailUsuario == null){
+            return "redirect:/login";
+        }
+        this.serviciosUsuarios.eliminarUsuarioPorEmail(emailUsuario);
+        sesion.invalidate();
+        return "redirect:/registro";
     }
 }

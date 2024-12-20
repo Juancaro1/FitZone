@@ -38,9 +38,17 @@ nav img {
     margin-right: 20px;
 }
 
+.fitzone{
+    margin-left: 20px;
+    height: 100%;
+    padding: 5px;
+    width: 4%;
+}
+
 .marca {
-    margin-left: -72%; /* Ajuste dinámico */
-    font-size: 40px;
+    margin-left: -64%; /* Ajuste dinámico */
+    width: 200px;
+    height: 50px;
 }
 
 nav ul {

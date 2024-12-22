@@ -36,6 +36,7 @@ public class ControladorPerfil {
         modelo.addAttribute("nombreUsuario", usuario.getNombre());
         modelo.addAttribute("apellidoUsuario", usuario.getApellido());
         modelo.addAttribute("sobreMiUsuario", usuario.getSobremi());
+        modelo.addAttribute("preferencia", usuario.getPreferencia());
 
         return "perfil.html";
     }

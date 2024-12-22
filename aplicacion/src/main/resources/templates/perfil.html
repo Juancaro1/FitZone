@@ -19,13 +19,11 @@
 
     <section>
         <img id="foto-perfil-preview" src="/img/perfil.png" alt="Vista previa de la foto de perfil">
-        <p class="nombre-usuario" th:text="${nombreUsuario}">Nombre Usuario</p> 
+        <p class="nombre-usuario" th:text="${usuario.nombre + ' ' + usuario.apellido}">Nombre Usuario</p>
         <a class="editar-perfil" href="#" id="editar-perfil-btn">Editar Perfil</a>
 
         <ul>
-            <li><a href="#">Sobre mi: <span th:text="${sobreMiUsuario}">No disponible</span></a></li> 
-            <li><a href="#">Visitas</a></li>
-            <li><a href="#">Preferencias: <span th:text="${preferencia}">Calistenia</span></a></li>
+            <li><a href="#">Sobre mi: <span th:text="${usuario.sobreMi}">No disponible</span></a></li> 
         </ul>
 
         <h4>Spots agregados por ti</h4>
@@ -39,7 +37,10 @@
         <ul class="preferencias-lista">
             <li th:each="preferencia : ${preferencias}" class="preferencia-item">
                 <span th:text="${preferencia}"></span>
-                <button class="btn-eliminar-preferencia" data-preferencia="${preferencia}">Eliminar</button>
+                <form th:action="@{/perfil/preferencia/eliminar}" method="POST">
+                    <input type="hidden" name="preferencia" th:value="${preferencia}">
+                    <button class="btn-eliminar-preferencia" type="submit">Eliminar</button>
+                </form>
             </li>
         </ul>
         
@@ -54,10 +55,11 @@
         </ul>
     </footer>
 
+    <!-- Modal para editar perfil -->
     <section id="editar-perfil-modal" style="display: none;">
         <div class="modal-content">
             <h2>Editar Perfil</h2>
-            <form id="form-editar-perfil" method="POST" action="#" th:action="@{/perfil/editar}" enctype="multipart/form-data">
+            <form id="form-editar-perfil" method="POST" th:action="@{/perfil/editar}" enctype="multipart/form-data">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" th:value="${nombreUsuario}" required>
     
@@ -73,6 +75,7 @@
         </div>
     </section>
     
+    <!-- Modal para editar preferencias -->
     <section id="editar-preferencia-modal" style="display: none;">
         <div class="modal-content-preferencia">
             <h2>Editar Preferencias</h2>

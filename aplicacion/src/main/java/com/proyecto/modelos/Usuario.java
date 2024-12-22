@@ -51,7 +51,7 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Resena> resenas;
 
-    private String sobreMi;
+    private String sobremi;
 
 
     public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, String preferencia) {
@@ -64,6 +64,7 @@ public class Usuario {
         this.resenas = resenas;
         this.genero = genero;
         this.preferencia = preferencia;
+        this.sobremi = sobremi;
         
     }
 
@@ -77,16 +78,17 @@ public class Usuario {
         this.resenas = null;
         this.genero = "";
         this.preferencia = "";
+        this.sobremi = "";
     }
 
 
 
-    public String getSobreMi() {
-        return this.sobreMi;
+    public String getSobremi() {
+        return this.sobremi;
     }
 
-    public void setSobreMi(String sobreMi) {
-        this.sobreMi = sobreMi;
+    public void setSobremi(String sobremi) {
+        this.sobremi = sobremi;
     }
     
     public String getGenero() {

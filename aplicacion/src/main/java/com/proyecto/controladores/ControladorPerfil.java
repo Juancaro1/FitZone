@@ -35,7 +35,7 @@ public class ControladorPerfil {
 
         modelo.addAttribute("nombreUsuario", usuario.getNombre());
         modelo.addAttribute("apellidoUsuario", usuario.getApellido());
-        modelo.addAttribute("sobreMiUsuario", usuario.getSobreMi());
+        modelo.addAttribute("sobreMiUsuario", usuario.getSobremi());
 
         return "perfil.html";
     }
@@ -48,7 +48,7 @@ public class ControladorPerfil {
         }
         usuarioSession.setNombre(usuario.getNombre());
         usuarioSession.setApellido(usuario.getApellido());
-        usuarioSession.setSobreMi(usuario.getSobreMi());
+        usuarioSession.setSobremi(usuario.getSobremi());
 
         this.serviciosUsuarios.actualizarUsuario(usuarioSession);
 

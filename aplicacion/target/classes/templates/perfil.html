@@ -6,7 +6,7 @@
     <title>Mi Perfil</title>
     <link rel="stylesheet" th:href="@{/css/StylePerfil.css}">
 </head>
-<body>
+<body data-user-id="123">
     <nav>
         <img class="fitzone" src="/img/Logo.png" alt="FitZone Logo">
         <img src="/img/4.png" class="marca" alt="logo-fitzone">
@@ -18,9 +18,9 @@
     </nav>
 
     <section>
-        <img class="foto-perfil" src="/img/perfil.png" alt="Foto de Perfil">
+        <img id="foto-perfil-preview" src="/img/perfil.png" alt="Vista previa de la foto de perfil">
         <p class="nombre-usuario" th:text="${nombreUsuario}">Nombre Usuario</p> 
-        <a class="editar-perfil" href="#">Editar Perfil</a>
+        <a class="editar-perfil" href="#" id="editar-perfil-btn">Editar Perfil</a>
 
         <ul>
             <li><a href="#">Sobre mi: <span th:text="${sobreMiUsuario}">No disponible</span></a></li> 
@@ -36,8 +36,14 @@
         <a class="boton-ir-mapa" href="#">Ir al Mapa</a>
 
         <h4>Preferencias</h4>
-        <span class="preferencias" th:text="${preferencia}">Calistenia</span>
-        <a href="#">+ Añadir Preferencia</a>
+        <ul class="preferencias-lista">
+            <li th:each="preferencia : ${preferencias}" class="preferencia-item">
+                <span th:text="${preferencia}"></span>
+                <button class="btn-eliminar-preferencia" data-preferencia="${preferencia}">Eliminar</button>
+            </li>
+        </ul>
+        
+        <a href="#" class="boton-editar-preferencia" id="editar-preferencia-btn">Añadir Preferencia</a>
     </section>
 
     <footer>
@@ -47,24 +53,39 @@
             <li><a href="#" class="logo-instagram"></a></li>
         </ul>
     </footer>
+
     <section id="editar-perfil-modal" style="display: none;">
         <div class="modal-content">
             <h2>Editar Perfil</h2>
-            <form th:action="@{/perfil/editar}" id="form-editar-perfil" method="POST">
+            <form id="form-editar-perfil" method="POST" action="#" th:action="@{/perfil/editar}" enctype="multipart/form-data">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" th:value="${nombreUsuario}" required>
-
+    
                 <label for="apellido">Apellido:</label>
                 <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" th:value="${apellidoUsuario}" required>
-
-                <label for="sobreMi">Sobre mi:</label>
-                <input type="textarea" th:value="${sobreMiUsuario}" placeholder="Escribe algo sobre ti">
-
-                <label for="subirImagen">Cambiar Foto de Perfil:</label>
-                <input type="file" name="foto-perfil" id="foto-perfil">
-                
+    
+                <label for="sobreMi">Sobre mí:</label>
+                <textarea id="sobreMi" name="sobreMi" placeholder="Escribe algo sobre ti" th:text="${sobreMiUsuario}"></textarea>
+    
                 <button type="submit">Guardar Cambios</button>
                 <button type="button" id="cancelar-editar-perfil">Cancelar</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="editar-preferencia-modal" style="display: none;">
+        <div class="modal-content-preferencia">
+            <h2>Editar Preferencias</h2>
+            <form th:action="@{/perfil/preferencias/guardar/}" method="POST" id="form-preferencia-perfil">
+                <label for="preferencia">Agregar nueva preferencia:</label>
+                <input 
+                    type="text" 
+                    id="preferencia" 
+                    name="preferencia" 
+                    placeholder="Escribe tu preferencia aquí" 
+                    required>
+                <button type="submit">Guardar Preferencia</button>
+                <button type="button" id="cancelar-editar-preferencia">Cancelar</button>
             </form>
         </div>
     </section>

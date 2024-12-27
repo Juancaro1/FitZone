@@ -1,5 +1,10 @@
 package com.proyecto.controladores;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proyecto.modelos.Usuario;
 import com.proyecto.servicios.ServiciosUsuarios;
@@ -43,39 +49,58 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
 
 
 
-    @PostMapping("/perfil/editar")
-public String editarPerfil(@ModelAttribute Usuario usuario, HttpSession sesion, Model model) {
-    String emailUsuario = (String) sesion.getAttribute("emailUsuario");
+@PostMapping("/perfil/editar")
+    public String editarPerfil(@ModelAttribute Usuario usuario, HttpSession sesion, Model model, @RequestParam("file") MultipartFile imagen) {
+        String emailUsuario = (String) sesion.getAttribute("emailUsuario");
 
-    if (emailUsuario == null) {
-        return "redirect:/login";
+        if (emailUsuario == null) {
+            return "redirect:/login";
+        }
+
+        Usuario usuarioSession = this.serviciosUsuarios.obtenerPorEmail(emailUsuario);
+
+        if (usuarioSession == null) {
+            return "redirect:/login";
+        }
+
+        if (!imagen.isEmpty()) {
+            String rutaAbsoluta = "C:/Usuarios/FotoPerfiles/";
+
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + File.separator + imagen.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+
+                // Establecer el nombre del archivo en el usuario
+                usuarioSession.setImagen(imagen.getOriginalFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "error";
+            }
+        } else {
+            System.out.println("El archivo está vacío");
+        }
+
+        usuarioSession.setNombre(usuario.getNombre());
+        usuarioSession.setApellido(usuario.getApellido());
+        usuarioSession.setSobreMi(usuario.getSobreMi());
+
+        try {
+            this.serviciosUsuarios.actualizarUsuario(usuarioSession);
+        } catch (Exception e) {
+            return "error";
+        }
+
+        sesion.setAttribute("emailUsuario", usuarioSession.getEmail());
+
+        model.addAttribute("nombreUsuario", usuarioSession.getNombre());
+        model.addAttribute("apellidoUsuario", usuarioSession.getApellido());
+        model.addAttribute("sobreMiUsuario", usuarioSession.getSobreMi());
+        model.addAttribute("imagen", "/FotoPerfiles/" + usuarioSession.getImagen());
+
+        return "perfil";
     }
 
-    Usuario usuarioSession = this.serviciosUsuarios.obtenerPorEmail(emailUsuario);
-
-    if (usuarioSession == null) {
-        return "redirect:/login";
-    }
-
-    usuarioSession.setNombre(usuario.getNombre());
-    usuarioSession.setApellido(usuario.getApellido());
-    usuarioSession.setSobreMi(usuario.getSobreMi());
-
-    try {
-        this.serviciosUsuarios.actualizarUsuario(usuarioSession);
-    } catch (Exception e) {
-        return "error"; 
-    }
-
-    sesion.setAttribute("emailUsuario", usuarioSession.getEmail());
-
-
-    model.addAttribute("nombreUsuario", usuarioSession.getNombre());
-    model.addAttribute("apellidoUsuario", usuarioSession.getApellido());
-    model.addAttribute("sobreMiUsuario", usuarioSession.getSobreMi());
-
-    return "perfil";
-}
 
 
     @GetMapping("/perfil/preferencias")

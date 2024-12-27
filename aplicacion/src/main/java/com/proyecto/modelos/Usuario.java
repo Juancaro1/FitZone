@@ -53,6 +53,8 @@ public class Usuario {
     @Column(name = "preferencia")
     private List<String> preferencias =  new ArrayList<>();
 
+    private String imagen;
+
     @Transient
     private String confirmarClave;
 
@@ -63,7 +65,7 @@ public class Usuario {
 
 
 
-    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, List<String> preferencias) {
+    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, List<String> preferencias, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -73,6 +75,7 @@ public class Usuario {
         this.resenas = resenas;
         this.genero = genero;
         this.preferencias = preferencias;
+        this.imagen = imagen;
     }
 
     public Usuario() {
@@ -85,6 +88,17 @@ public class Usuario {
         this.resenas = null;
         this.genero = "";
         this.preferencias = new ArrayList<>();
+        this.imagen = "";
+    }
+
+
+
+    public String getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
 

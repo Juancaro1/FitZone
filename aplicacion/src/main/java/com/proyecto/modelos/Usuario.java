@@ -1,12 +1,16 @@
 package com.proyecto.modelos;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -44,7 +48,13 @@ public class Usuario {
 
     private String genero;
 
-    private String preferencia;
+    @ElementCollection
+    @CollectionTable(name = "preferencias", joinColumns = @JoinColumn(name = "usuario_id"))
+    @Column(name = "preferencia")
+    private List<String> preferencias =  new ArrayList<>();
+
+    private String imagen;
+
     @Transient
     private String confirmarClave;
 
@@ -54,7 +64,8 @@ public class Usuario {
     private String sobremi;
 
 
-    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, String preferencia) {
+
+    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, List<String> preferencias, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -63,9 +74,9 @@ public class Usuario {
         this.confirmarClave = confirmarClave;
         this.resenas = resenas;
         this.genero = genero;
-        this.preferencia = preferencia;
+        this.preferencias = preferencias;
         this.sobremi = sobremi;
-        
+        this.imagen = imagen;
     }
 
     public Usuario() {
@@ -77,10 +88,36 @@ public class Usuario {
         this.confirmarClave = "";
         this.resenas = null;
         this.genero = "";
-        this.preferencia = "";
+        this.preferencias = new ArrayList<>();
         this.sobremi = "";
+        this.imagen = "";
     }
 
+
+
+    public String getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+
+    public void addPreferencia(String preferencia) {
+        if (this.preferencias == null) {
+            this.preferencias = new ArrayList<>();
+        }
+        this.preferencias.add(preferencia);
+    }
+
+    public List<String> getPreferencias() {
+        return this.preferencias;
+    }
+
+    public void setPreferencias(List<String> preferencias) {
+        this.preferencias = preferencias;
+    }
 
 
     public String getSobremi() {
@@ -155,16 +192,6 @@ public class Usuario {
     public void setResenas(List<Resena> resenas) {
         this.resenas = resenas;
     }
-
-
-    public String getPreferencia() {
-        return preferencia;
-    }
-
-    public void setPreferencia(String preferencia) {
-        this.preferencia = preferencia;
-    }
-
 
 
 }

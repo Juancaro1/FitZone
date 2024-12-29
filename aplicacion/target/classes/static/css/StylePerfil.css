@@ -1,4 +1,3 @@
-/* General */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -20,9 +19,9 @@ ul {
     margin: 0;
 }
 
-/* Navbar */
+
 nav {
-    background-color: #228B22; /* Verde */
+    background-color: #228B22;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -38,7 +37,7 @@ nav img {
     margin-right: 20px;
 }
 
-.fitzone{
+.fitzone {
     margin-left: 20px;
     height: 100%;
     padding: 5px;
@@ -46,7 +45,7 @@ nav img {
 }
 
 .marca {
-    margin-left: -64%; /* Ajuste dinámico */
+    margin-left: -64%;
     width: 200px;
     height: 50px;
 }
@@ -66,13 +65,13 @@ nav a {
     font-size: 17px;
 }
 
-/* Sección Principal */
+
 section {
     text-align: center;
     padding: 20px;
 }
 
-.foto-perfil {
+#foto-perfil-preview {
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -98,7 +97,7 @@ span {
     color: #333;
 }
 
-/* Menú de Pestañas */
+
 section ul {
     display: flex;
     justify-content: center;
@@ -116,11 +115,11 @@ section ul li a {
 
 section ul li a:hover,
 section ul li a.active {
-    color: #228B22; /* Verde */
+    color: #228B22;
     border-bottom: 2px solid #228B22;
 }
 
-/* Contenido de Visitas */
+
 h4 {
     margin: 20px 0 10px;
     font-size: 18px;
@@ -135,18 +134,18 @@ section p {
     line-height: 1.5;
 }
 
-/* Imagen del Mapa */
+
 section img {
     display: block;
     margin: 0 auto;
-    width: 100%; /* Ajuste responsivo */
+    width: 100%;
     max-width: 500px;
     height: auto;
     border: 1px solid #ddd;
     border-radius: 10px;
 }
 
-/* Botón Ir al Mapa */
+
 .boton-ir-mapa {
     display: block;
     margin: 15px auto;
@@ -165,7 +164,7 @@ section img {
     background-color: #1c6b1c;
 }
 
-/* Preferencias */
+
 .preferencias {
     display: inline-block;
     background-color: #f5f5f5;
@@ -193,7 +192,7 @@ a.boton-preferencia:hover {
     background-color: #d5d5d5;
 }
 
-/* Footer */
+
 footer {
     background-color: #228B22;
     display: flex;
@@ -243,7 +242,7 @@ footer a.logo-instagram {
     background-image: url('https://static.vecteezy.com/system/resources/previews/018/930/413/original/instagram-logo-instagram-icon-transparent-free-png.png');
 }
 
-/* Modal para Editar Perfil */
+
 #editar-perfil-modal {
     position: fixed;
     top: 0;
@@ -273,7 +272,7 @@ footer a.logo-instagram {
     color: #333;
 }
 
-/* Formulario */
+
 #form-editar-perfil {
     display: flex;
     flex-direction: column;
@@ -302,7 +301,7 @@ footer a.logo-instagram {
     box-shadow: 0 0 4px rgba(34, 139, 34, 0.5);
 }
 
-/* Botones */
+
 #form-editar-perfil button {
     padding: 10px;
     font-size: 14px;
@@ -330,5 +329,112 @@ footer a.logo-instagram {
 }
 
 #form-editar-perfil button#cancelar-editar-perfil:hover {
+    background-color: #bbb;
+}
+
+.preferencias-lista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+    font-weight: bold;
+}
+
+.preferencia-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+}
+
+
+#editar-preferencia-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content-preferencia {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-content-preferencia h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+
+#form-preferencia-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#form-preferencia-perfil label {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    color: #333;
+}
+
+#form-preferencia-perfil input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#form-preferencia-perfil input:focus {
+    outline: none;
+    border-color: #228B22;
+    box-shadow: 0 0 4px rgba(34, 139, 34, 0.5);
+}
+
+
+#form-preferencia-perfil button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#form-preferencia-perfil button[type="submit"] {
+    background-color: #228B22;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+#form-preferencia-perfil button[type="submit"]:hover {
+    background-color: #1c6b1c;
+}
+
+#form-preferencia-perfil button#cancelar-editar-preferencia {
+    background-color: #ccc;
+    color: #333;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#form-preferencia-perfil button#cancelar-editar-preferencia:hover {
     background-color: #bbb;
 }

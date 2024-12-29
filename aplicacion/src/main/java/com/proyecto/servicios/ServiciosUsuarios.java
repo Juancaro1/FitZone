@@ -47,6 +47,27 @@ public class ServiciosUsuarios {
         this.repositorioUsuarios.findByEmail(email);
     }
 
+    public Usuario actualizarPreferencia(Usuario usuario){
+        return this.repositorioUsuarios.save(usuario);
+    }
+
+    public void eliminarPreferencia(Usuario usuario, String preferencia) {
+        List<String> preferencias = usuario.getPreferencias();
+        if (preferencias != null) {
+            preferencias.remove(preferencia);
+            usuario.setPreferencias(preferencias);
+            // Actualizar el usuario con las preferencias modificadas en la base de datos
+            this.repositorioUsuarios.save(usuario); // Asumiendo que tienes un repositorio de usuarios
+        }
+    }
+    
+
+
+    public void agregarPreferencia(Usuario usuario, String preferencia) {
+        usuario.addPreferencia(preferencia); // Agrega la preferencia a la lista
+        actualizarPreferencia(usuario); // Luego guarda los cambios
+    }
+
     //Validamos en el registro si coinciden las contrasenas 
 	public BindingResult validarRegistro(BindingResult validaciones, Usuario usuario) {
 		if(!usuario.getClave().equals(usuario.getConfirmarClave())) {

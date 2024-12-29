@@ -23,7 +23,7 @@
         <a class="editar-perfil" href="#" id="editar-perfil-btn">Editar Perfil</a>
 
         <ul>
-            <li><a href="#">Sobre mi: <span th:text="${usuario.sobremi}">No disponible</span></a></li> 
+            <li><a href="#">Sobre mi: <span th:text="${usuario.sobreMi}">No disponible</span></a></li> 
             <li><a href="#">Visitas</a></li>
             <li><a href="#">Preferencias: <span th:text="${preferencia}">Calistenia</span></a></li>
         </ul>
@@ -67,8 +67,8 @@
                 <label for="apellido">Apellido:</label>
                 <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" th:value="${apellidoUsuario}" required>
     
-                <label for="sobremi">Sobre mí:</label>
-                <textarea id="sobreMi" name="sobremi" placeholder="Escribe algo sobre ti" th:text="${sobreMiUsuario}"></textarea>
+                <label for="sobreMi">Sobre mí:</label>
+                <textarea id="sobreMi" name="sobreMi" placeholder="Escribe algo sobre ti" th:text="${sobreMiUsuario}"></textarea>
 
                 <label for="imagen">Cambiar foto de perfil:</label>
                 <input type="file" id="imagen" name="file" accept="image/*">

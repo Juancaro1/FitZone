@@ -83,7 +83,7 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
 
         usuarioSession.setNombre(usuario.getNombre());
         usuarioSession.setApellido(usuario.getApellido());
-        usuarioSession.setSobremi(usuario.getSobremi());
+        usuarioSession.setSobreMi(usuario.getSobreMi());
 
         try {
             this.serviciosUsuarios.actualizarUsuario(usuarioSession);
@@ -95,7 +95,7 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
 
         model.addAttribute("nombreUsuario", usuarioSession.getNombre());
         model.addAttribute("apellidoUsuario", usuarioSession.getApellido());
-        model.addAttribute("sobreMiUsuario", usuarioSession.getSobremi());
+        model.addAttribute("sobreMiUsuario", usuarioSession.getSobreMi());
         model.addAttribute("imagen", "/FotoPerfiles/" + usuarioSession.getImagen());
 
         return "perfil";

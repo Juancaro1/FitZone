@@ -61,7 +61,7 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Resena> resenas;
 
-    private String sobremi;
+    private String sobreMi;
 
 
 
@@ -75,7 +75,7 @@ public class Usuario {
         this.resenas = resenas;
         this.genero = genero;
         this.preferencias = preferencias;
-        this.sobremi = sobremi;
+        this.sobreMi = sobremi;
         this.imagen = imagen;
     }
 
@@ -89,7 +89,7 @@ public class Usuario {
         this.resenas = null;
         this.genero = "";
         this.preferencias = new ArrayList<>();
-        this.sobremi = "";
+        this.sobreMi = "";
         this.imagen = "";
     }
 
@@ -120,12 +120,12 @@ public class Usuario {
     }
 
 
-    public String getSobremi() {
-        return this.sobremi;
+    public String getSobreMi() {
+        return this.sobreMi;
     }
 
-    public void setSobremi(String sobremi) {
-        this.sobremi = sobremi;
+    public void setSobreMi(String sobremi) {
+        this.sobreMi = sobremi;
     }
     
     public String getGenero() {

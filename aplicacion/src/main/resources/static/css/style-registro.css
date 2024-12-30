@@ -1,0 +1,255 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+* {
+  
+  margin: 0;
+  padding: 0;
+  font-family: "Lexend-Medium", sans-serif;
+  box-sizing: border-box;
+
+ }
+
+   .body {
+    background-color:  rgb(100, 100, 100) ;
+    
+  }
+
+  .presentacion{
+  background-image: url(/img/barra-manos.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  width: 50%;
+  height: 112%;
+  position: absolute;
+  filter: blur(0.05px);
+
+  }
+  
+  .grupo36 {
+  display: flexbox;
+  padding: 1%;
+  width: 50%;
+  height:95% ;
+  max-width: 50%;
+  max-height:95% ;
+  margin-top: 50px;
+  margin-bottom:50px ;
+  position:absolute;
+ 
+
+
+}
+
+.puntito{ 
+  width: 20%;
+  position:absolute;
+  margin-top:1%;
+  margin-left:15%;
+  
+}
+
+ .fitzone {  
+ width:50% ;
+ position:absolute;
+ margin-top: 10%;
+ margin-left:35%;
+  
+}
+
+ .parrafo {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lexend-Medium", sans-serif;
+  font-size: 40px;
+  line-height: 50px;
+  letter-spacing: 0.13em;
+  height: 50%;
+  margin: 2%;
+  margin-top: 30%;
+  margin-bottom: 10%;
+}
+
+.fondomapa {
+  
+  background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center;
+  opacity: 0.46;
+  width: 50%;
+  height: 113%;
+  position: absolute;
+  left: 50%;
+  top: -15px;
+  filter: blur(2px);
+  object-fit: cover;
+}
+
+.card {
+  background: #3b9b31;
+  border-radius: 30px;
+  left: 50%;
+  justify-content: center;
+  width: 35%;
+  height: 71%;
+  position: absolute;
+  margin-top: 3%;
+  margin-left: 8%; 
+  padding :1% ;
+  -webkit-box-shadow: -10px 6px 38px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: -10px 6px 38px 2px rgba(0,0,0,0.75);
+  box-shadow: -10px 6px 38px 2px rgba(0,0,0,0.75);
+  text-align: center;
+
+
+}
+
+.container {
+
+}
+
+.container .form {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 4px;
+}
+ 
+.container .iniciacard,
+.container.iniciacardform .form.registrocard {
+  display: none;
+}
+.container.iniciacardform .form.iniciacard {
+   display: flex;
+
+}
+
+
+
+ .container .form h2 {
+  color: #ffffff;
+  font-family: 'Kdam Thmor Pro';font-size: 22px;
+  font-size: 43.18920135498047px;
+  line-height: 71.08px;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  width:70% ;
+  height:15% ;
+}
+
+.container .form .caja_input  {
+position: relative;
+width: 300px; 
+  margin: 2%;
+}
+.container .form .caja_input  input {
+  
+  padding: 12px 10px 12px 48px;
+  width: 100%;
+  border-radius: 20px;
+  font-width: 300 ; 
+  font-size: 1em;
+  transition: 0.5s;
+}
+.container .form .caja_input span {
+position: absolute;
+left: 0;
+padding: 12px 10px 12px 48px;
+pointer-events: none;
+}
+.container .form  .caja_input i {
+  position: absolute;
+  top: 32px;
+  left: 16px;
+  width: 25px;
+  padding: 2px 0;
+  padding-right: 8px;
+  border-right: 1px solid;
+}
+
+.container .form .caja_genero {
+position: relative;
+width: 300px; 
+}
+
+.container .form .caja_genero select{
+  padding: 12px 10px 12px 48px;
+  width: 100%;
+  border-radius: 20px;
+  font-width: 300 ; 
+  font-size: 1em;
+  transition: 0.5s;
+}
+
+.container .form .caja_genero i {
+  position: absolute;
+  top: 32px;
+  left: 17px;
+  width: 25px;
+  padding: 2px 0;
+  padding-right: 8px;
+  border-right: 1px solid;
+}
+
+* a {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+ .btn {
+  position: absolute;
+  left: 68%;
+  bottom:5%;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #3b9b31;
+  font-family: 'Kdam Thmor Pro';font-size: 22px;
+  font-size: 43.18920135498047px;
+  line-height: 71.08px;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  height:15% ;
+  border-radius: 11%;
+  padding: 1%;
+  border: none;
+  outline: none;
+
+}
+
+.btn::after, .btn::before {
+content: "";
+position: absolute;
+opacity: 0.3;
+background-color: #3b9b31;
+border-radius:inherit ;
+width: 100%;
+height: 100%;
+left: 0;
+bottom: 0;
+z-index: -1;
+transition: transformation 0.3s ease;
+}
+
+.btn:hover {
+transform: translate(-12px,-12px);
+}
+
+.btn:hover::after {
+  transform: translate(6px,6px);
+}
+.btn:hover::before {
+  transform: translate(12px,12px);
+}
+
+
+
+
+
+
+
+

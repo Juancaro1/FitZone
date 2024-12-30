@@ -66,13 +66,16 @@
 		</select>
 		<span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="error-text"></span>
 		</div>
-
 		<label for="preferencia">Preferencia:</label>
-        <span>Calistenia</span>
-        <input type="radio" name="preferencia" value="Calistenia">
-        <label for="preferencia"></label>
-        <span>Cardio</span>
-        <input type="radio" name="preferencia" value="Cardio">
+		<div class="caja_preferencia">
+			
+			<span>Calistenia</span>
+			<input type="radio" name="preferencia" value="Calistenia">
+			<label for="preferencia"></label>
+			<span>Cardio</span>
+			<input type="radio" name="preferencia" value="Cardio">
+		</div>
+		
 
 		<div class="caja_input">
 		<i class="fa-solid fa-lock"></i>

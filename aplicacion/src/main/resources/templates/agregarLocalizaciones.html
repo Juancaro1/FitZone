@@ -29,7 +29,10 @@
 			<label for="direccion">Dirección:</label>
 			<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
 			<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
-	
+            
+            <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
+            <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>
+
 			<span>Ubica la localización en el mapa:</span>
 			<div id="map" style="width: 500px; height: 400px;"></div>
 	

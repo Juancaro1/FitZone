@@ -16,11 +16,10 @@ crossorigin=""></script>
 		<ul>
 			<li><a href="/localizaciones/agregar">Agregar Localización</a></li>
 			<li><a href="/logout">Cerrar Sesion</a></li>
-			<li><a href="/perfil">Perfil</a></li>
 		</ul>
 	</nav>
 	
-	<div th:each="localizacion : ${localizaciones}">
+	<div>
         <h2 th:text="${localizacion.nombre}">Localización</h2>
         <p th:text="${localizacion.direccion}">Dirección</p>
 		<p style = "display:none" class="cordx" th:text="${localizacion.cordX}"></p>
@@ -31,5 +30,7 @@ crossorigin=""></script>
 	<div id="map" style="width: 500px; height: 400px;"></div>
 	
 	<script th:src="@{/js/localizaciones.js}"></script>
+
+    <input type="submit" value="Agregar"/>
 </body>
 </html>

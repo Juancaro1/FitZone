@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="stylesheet" th:href="@{/css/agregarLocalizaciones.css}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
@@ -12,16 +12,20 @@
     <title>Agregar Localización</title>
 </head>
 <body>
-    <h2>Agregar Localización</h2>
+    
     <nav>
+        <img class="fitzone" src="/img/Logo.png" alt="FitZone Logo">
+        <img src="/img/4.png" class="marca" alt="logo-fitzone">
+        <h2>Añade una Localización</h2>
         <ul>
+            <li><a href="/perfil">Perfil</a></li>
             <li><a href="/localizaciones">Localizaciones</a></li>
             <li><a href="/logout">Cerrar sesión</a></li>
         </ul>
     </nav>
     
     <form th:action="@{/guardar}" method="POST" th:object="${localizacion}">
-		<div>
+		<div class="card-add-localizacion">
 			<label for="nombre">Nombre:</label>
 			<input type="text" id="nombre" th:field="*{nombre}" class="form-control"/>
 			<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-text"></span>
@@ -33,12 +37,13 @@
             <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
             <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>
 
-			<span>Ubica la localización en el mapa:</span>
-			<div id="map" style="width: 500px; height: 400px;"></div>
+			<label>Ubica la localización en el mapa:</label>
+			<div id="map" class="mapa" style="width: 450px; height: 350px;"></div>
 	
-			<input type="submit" value="Agregar"/>
+			<input class="boton-add-localizacion" type="submit" value="Agregar"/>
 		</div>
 	</form>
+   
 
     <!-- Enlazar el archivo JavaScript -->
     <script th:src="@{/js/index.js}"></script>

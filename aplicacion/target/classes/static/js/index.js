@@ -18,7 +18,6 @@ map.on('click', async function(ev) {
     const { lat, lng } = ev.latlng;
     if(!marcador){
         marcador = L.marker(ev.latlng).addTo(map);
-        document.getElementById("a").innerHTML="b"
     }
     else{
         marcador.setLatLng([lat, lng]);
@@ -29,7 +28,8 @@ map.on('click', async function(ev) {
     try {
         const direccion = await getGoogleAddress(lat, lng);
         document.getElementById("direccion").value = direccion;
-
+        document.getElementById("cordX").value = lat;
+        document.getElementById("cordY").value = lng;
         console.log("Ciudad encontrada:", direccion);
         console.log(direccion);
 

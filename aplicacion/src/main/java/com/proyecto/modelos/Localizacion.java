@@ -36,6 +36,8 @@ public class Localizacion {
         this.nombre = nombre;
         this.direccion = direccion;
         this.resenas = resenas;
+        this.cordX = cordX;
+        this.cordY = cordY;
     }
     public Localizacion() {
         this.id = 0l;

@@ -1,12 +1,16 @@
 package com.proyecto.modelos;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -41,7 +45,15 @@ public class Usuario {
 
     @NotBlank(message= "Este campo es obligatorio.")
     @Size(min = 3, message = "Debe contener al menos 3 caracteres.")
+
     private String genero;
+
+    @ElementCollection
+    @CollectionTable(name = "preferencias", joinColumns = @JoinColumn(name = "usuario_id"))
+    @Column(name = "preferencia")
+    private List<String> preferencias =  new ArrayList<>();
+
+    private String imagen;
 
     @Transient
     private String confirmarClave;
@@ -52,7 +64,8 @@ public class Usuario {
     private String sobreMi;
 
 
-    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobreMi) {
+
+    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, List<String> preferencias, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -61,7 +74,8 @@ public class Usuario {
         this.confirmarClave = confirmarClave;
         this.resenas = resenas;
         this.genero = genero;
-        this.sobreMi = sobreMi;
+        this.preferencias = preferencias;
+        this.imagen = imagen;
     }
 
     public Usuario() {
@@ -73,9 +87,35 @@ public class Usuario {
         this.confirmarClave = "";
         this.resenas = null;
         this.genero = "";
-        this.sobreMi = "";
+        this.preferencias = new ArrayList<>();
+        this.imagen = "";
     }
 
+
+
+    public String getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+
+    public void addPreferencia(String preferencia) {
+        if (this.preferencias == null) {
+            this.preferencias = new ArrayList<>();
+        }
+        this.preferencias.add(preferencia);
+    }
+
+    public List<String> getPreferencias() {
+        return this.preferencias;
+    }
+
+    public void setPreferencias(List<String> preferencias) {
+        this.preferencias = preferencias;
+    }
 
 
     public String getSobreMi() {
@@ -150,7 +190,6 @@ public class Usuario {
     public void setResenas(List<Resena> resenas) {
         this.resenas = resenas;
     }
-
 
 
 }

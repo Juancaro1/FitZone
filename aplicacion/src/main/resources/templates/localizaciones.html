@@ -23,6 +23,7 @@ crossorigin=""></script>
 	<div th:each="localizacion : ${localizaciones}">
         <h2 th:text="${localizacion.nombre}">Localización</h2>
         <p th:text="${localizacion.direccion}">Dirección</p>
+		<p th:text="${localizacion.puntuacion}">Puntuación</p>
 		<p style = "display:none" class="cordx" th:text="${localizacion.cordX}"></p>
 		<p style = "display:none" class="cordy" th:text="${localizacion.cordY}"></p>
 		

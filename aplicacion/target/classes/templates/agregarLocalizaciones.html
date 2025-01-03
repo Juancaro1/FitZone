@@ -33,6 +33,10 @@
 			<label for="direccion">Dirección:</label>
 			<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
 			<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
+
+            <label for="puntuacion">Puntuación</label>
+            <input type="number" min="1" max="5" id="puntuacion" th:field="*{puntuacion}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('puntuacion')}" th:errors="*{puntuacion}" class="error-text"></span>
             
             <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
             <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>

@@ -13,14 +13,15 @@
 </head>
 <body>
     
+   
+
     <nav>
         <img class="fitzone" src="/img/Logo.png" alt="FitZone Logo">
         <img src="/img/4.png" class="marca" alt="logo-fitzone">
-        <h2>Añade una Localización</h2>
         <ul>
             <li><a href="/perfil">Perfil</a></li>
             <li><a href="/localizaciones">Localizaciones</a></li>
-            <li><a href="/logout">Cerrar sesión</a></li>
+            <li><a href="/logout">Logout</a></li>
         </ul>
     </nav>
     
@@ -33,10 +34,6 @@
 			<label for="direccion">Dirección:</label>
 			<input type="text" id="direccion" th:field="*{direccion}" class="form-control"/>
 			<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error-text"></span>
-
-            <label for="puntuacion">Puntuación</label>
-            <input type="number" min="1" max="5" id="puntuacion" th:field="*{puntuacion}" class="form-control"/>
-			<span th:if="${#fields.hasErrors('puntuacion')}" th:errors="*{puntuacion}" class="error-text"></span>
             
             <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
             <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>
@@ -47,7 +44,7 @@
 			<input class="boton-add-localizacion" type="submit" value="Agregar"/>
 		</div>
 	</form>
-   
+
 
     <!-- Enlazar el archivo JavaScript -->
     <script th:src="@{/js/index.js}"></script>

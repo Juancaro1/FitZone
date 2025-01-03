@@ -1,35 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="/css/styles.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-crossorigin=""></script>
-<title>Ubicacion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styleLocalizaciones.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Document</title>
 </head>
 <body>
-	<nav>
-		<ul>
-			<li><a href="/localizaciones/agregar">Agregar Localización</a></li>
-			<li><a href="/logout">Cerrar Sesion</a></li>
-			<li><a href="/perfil">Perfil</a></li>
-		</ul>
-	</nav>
-	
-	<div th:each="localizacion : ${localizaciones}">
-        <h2 th:text="${localizacion.nombre}">Localización</h2>
-        <p th:text="${localizacion.direccion}">Dirección</p>
-		<p style = "display:none" class="cordx" th:text="${localizacion.cordX}"></p>
-		<p style = "display:none" class="cordy" th:text="${localizacion.cordY}"></p>
-		
-    </div>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <img th:src="@{/img/Diseño sin título.png}" alt="logo">
+          <img class="navbar-brand" th:src="@{/img/4.png}" alt="nombre-pagina">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" th:href="@{/localizaciones/agregar}">Anadir spot</a>
+              <a class="nav-link" th:href="@{/perfil}">Mi Perfil</a>
+              <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-	<div id="map" style="width: 500px; height: 400px;"></div>
-	
-	<script th:src="@{/js/localizaciones.js}"></script>
+      <div class="container-portada">
+        <img src="https://claudia.abril.com.br/wp-content/uploads/2022/08/GettyImages-1412753235.jpg?quality=85&strip=info" style="border-radius: 10px;" class="img-fluid" alt="Imagen portada">
+        <form class="d-flex" style="border-radius: 10px;" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" style="background-color: green; color: white;" type="submit">Search</button>
+        </form>
+        <p>"El mejor momento para entrenar es ahora, y el mejor lugar es el que te rodea."</p>
+    </div>
+    
+
+      <div class="opciones">
+        <ul class="opciones-links">
+            <li><a href="#">Calistenia</a></li>
+            <li><a href="#">Cardio</a></li>
+        </ul>
+      </div>
+
+      
+      <div class="container-localizaciones" style="max-width: 90%; height: 500px;">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            
+            <div class="carousel-item active" >
+              <div class="d-flex justify-content-center gap-3" >
+                <div class="card" style="width: 18rem;" >
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion1" >
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion2">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion3">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion4">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center gap-3">
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion5">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion6">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion7">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion8">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center gap-3">
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion9">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion10">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion11">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="http://2.bp.blogspot.com/-90_fGHPSYuY/UUoFsMqrNZI/AAAAAAAAY4k/jtdrMKTAAxQ/s1600/IMG_2135.JPG" class="card-img-top" alt="Localizacion12">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+      
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="container-mapa">
+        <img src="https://www.en10pasos.com/wp-content/uploads/2016/09/ubicacion-negocio.jpg"
+         class="img-fluid" alt="Foto mapa" style="width: 800px; height: 300px;">
+      </div>
+
+      <footer class="footer text-white py-3">
+        <div class="container d-flex justify-content-center align-items-center gap-5">
+            <span>Contacto: contacto@tuemail.com</span>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank" class="text-white me-3">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="text-white">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script src="@{/js/scriptLocalizaciones.js}"></script>
 </body>
 </html>

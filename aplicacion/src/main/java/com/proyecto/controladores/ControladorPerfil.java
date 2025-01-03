@@ -49,7 +49,7 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
 
 
 
-@PostMapping("/perfil/editar")
+    @PostMapping("/perfil/editar")
     public String editarPerfil(@ModelAttribute Usuario usuario, HttpSession sesion, Model model, @RequestParam("file") MultipartFile imagen) {
         String emailUsuario = (String) sesion.getAttribute("emailUsuario");
 

@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Lexend-Medium", sans-serif;
+    box-sizing: border-box;
+
+}
+nav {
+    background-color: #228B22;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 65px;
+}
+nav img {
+    width: 10px;
+    height: 200px;
+    background-color: transparent;
+    margin-right: 20px;
+}
+
+.fitzone {
+    margin-left: 20px;
+    height: 100%;
+    padding: 5px;
+    width: 4%;
+}
+
+.marca {
+    margin-left: -64%;
+    width: 200px;
+    height: 50px;
+}
+nav h2{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.card-add-localizacion {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+    background: #3b9b31;
+    border-radius: 30px;
+    width: 35%;
+    height: 71%;
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    -webkit-box-shadow: -10px 6px 38px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -10px 6px 38px 2px rgba(0, 0, 0, 0.75);
+    box-shadow: -10px 6px 38px 2px rgba(0, 0, 0, 0.75);
+}
+.card-add-localizacion label{
+    color: white;
+    font-weight: bold;
+}
+
+
+form .card-add-localizacion input{
+    padding: 12px 10px 12px 48px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    font-size: 1em;
+    transition: 0.5s;
+}
+#map{
+    border-radius: 10px;
+    width: 450px; 
+    height: 350px;
+}
+.boton-add-localizacion {
+    background-color: #56c44a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Suavidad de la animación */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+}
+
+.boton-add-localizacion:hover {
+    transform: translateY(-3px); /* Levanta el botón ligeramente */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+

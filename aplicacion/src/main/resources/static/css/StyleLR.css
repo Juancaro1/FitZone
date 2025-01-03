@@ -94,7 +94,7 @@
   left: 50%;
   justify-content: center;
   width: 35%;
-  height: 71%;
+  height: auto;
   position: absolute;
   margin-top: 3%;
   margin-left: 8%; 
@@ -200,6 +200,7 @@ width: 300px;
 
 
 
+
 .container .form h2 {
   color: #ffffff;
   font-family: 'Kdam Thmor Pro';font-size: 22px;
@@ -221,7 +222,7 @@ width: 300px;
   padding: 12px 10px 12px 48px;
   width: 100%;
   border-radius: 20px;
-  font-width: 300 ; 
+  font-weight: 300 ; 
   font-size: 1em;
   transition: 0.5s;
 }
@@ -250,7 +251,7 @@ width: 300px;
   padding: 12px 10px 12px 48px;
   width: 100%;
   border-radius: 20px;
-  font-width: 300 ; 
+  font-weight: 300 ; 
   font-size: 1em;
   transition: 0.5s;
 }
@@ -335,7 +336,6 @@ transform: translate(-12px,-12px);
 }
 
 .login-boton::after, .login-boton::before{
-  content: "";
 position: absolute;
 opacity: 0.3;
 background-color: #3b9b31;
@@ -359,7 +359,13 @@ transition: transformation 0.3s ease;
     transform: translate(12px,12px);
   }
 
-
+.caja_preferencia{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  background-color: white;
+  border-radius: 20px;
+}
 
 
 

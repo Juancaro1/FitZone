@@ -75,6 +75,7 @@ public class Usuario {
         this.resenas = resenas;
         this.genero = genero;
         this.preferencias = preferencias;
+        this.sobreMi = sobremi;
         this.imagen = imagen;
     }
 
@@ -88,6 +89,7 @@ public class Usuario {
         this.resenas = null;
         this.genero = "";
         this.preferencias = new ArrayList<>();
+        this.sobreMi = "";
         this.imagen = "";
     }
 
@@ -122,8 +124,8 @@ public class Usuario {
         return this.sobreMi;
     }
 
-    public void setSobreMi(String sobreMi) {
-        this.sobreMi = sobreMi;
+    public void setSobreMi(String sobremi) {
+        this.sobreMi = sobremi;
     }
     
     public String getGenero() {

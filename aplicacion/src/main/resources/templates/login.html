@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="caja_input">
-                        <i class="fa-solid fa-envelope"></i>
+                        <i class="fa-solid fa-lock"></i>
                         <label for="clave">Contraseña:</label>
                         <input type="password" id="clave" th:field="*{clave}"  class="form-control"/>
                         <span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}" class="error-text"></span>

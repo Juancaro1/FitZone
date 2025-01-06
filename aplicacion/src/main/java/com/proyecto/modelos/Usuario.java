@@ -1,16 +1,12 @@
 package com.proyecto.modelos;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -48,10 +44,7 @@ public class Usuario {
 
     private String genero;
 
-    @ElementCollection
-    @CollectionTable(name = "preferencias", joinColumns = @JoinColumn(name = "usuario_id"))
-    @Column(name = "preferencia")
-    private List<String> preferencias =  new ArrayList<>();
+    private String preferencia;
 
     private String imagen;
 
@@ -65,7 +58,7 @@ public class Usuario {
 
 
 
-    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, List<String> preferencias, String imagen) {
+    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, String preferencia, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -74,8 +67,7 @@ public class Usuario {
         this.confirmarClave = confirmarClave;
         this.resenas = resenas;
         this.genero = genero;
-        this.preferencias = preferencias;
-        this.sobreMi = sobremi;
+        this.preferencia = preferencia;
         this.imagen = imagen;
     }
 
@@ -88,8 +80,7 @@ public class Usuario {
         this.confirmarClave = "";
         this.resenas = null;
         this.genero = "";
-        this.preferencias = new ArrayList<>();
-        this.sobreMi = "";
+        this.preferencia = "";
         this.imagen = "";
     }
 
@@ -104,20 +95,14 @@ public class Usuario {
     }
 
 
-    public void addPreferencia(String preferencia) {
-        if (this.preferencias == null) {
-            this.preferencias = new ArrayList<>();
-        }
-        this.preferencias.add(preferencia);
+    public String getPreferencia() {
+        return this.preferencia;
     }
 
-    public List<String> getPreferencias() {
-        return this.preferencias;
+    public void setPreferencia(String preferencia) {
+        this.preferencia = preferencia;
     }
 
-    public void setPreferencias(List<String> preferencias) {
-        this.preferencias = preferencias;
-    }
 
 
     public String getSobreMi() {

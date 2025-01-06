@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/StylePerfil.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <title>Mi Perfil</title>
     <link rel="stylesheet" th:href="@{/css/StylePerfil.css}">
 </head>
 <body data-user-id="123">
-    
-    <nav>
-        <img class="fitzone" src="/img/Logo.png" alt="FitZone Logo">
-        <img src="/img/4.png" class="marca" alt="logo-fitzone">
-        <ul>
-            <li><a href="/perfil">Perfil</li>
-            <li><a href="/localizaciones/agregar">Añadir Spot</a></li>
-            <li><a href="/localizaciones">Localizaciones</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-    </nav>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <img class="logo1" th:src="@{/img/Diseño sin título.png}" alt="logo">
+          <img class="navbar-brand logo2" th:src="@{/img/4.png}" alt="nombre-pagina">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" th:href="@{/localizaciones/agregar}">Anadir spot</a>
+              <a class="nav-link" th:href="@{/localizaciones}">Localizaciones</a>
+              <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </div>
+          </div>
+        </div>
+      </nav>
 
     <section>
         <img id="foto-perfil-preview" th:src="@{'/FotoPerfiles/' + ${usuario.imagen}}" alt="Imagen de perfil">
@@ -27,30 +33,15 @@
 
         <ul>
             <li><a href="#">Sobre mi: <span th:text="${usuario.sobreMi}">No disponible</span></a></li> 
-            <li><a href="#">Visitas</a></li>
-            <li><a href="#">Preferencias: <span th:text="${preferencia}">Calistenia</span></a></li>
+            <li><a href="#">Preferencia: <span th:text="${preferencias}">No disponible</span></a></li>
         </ul>
 
         <h4>Spots agregados por ti</h4>
         <p>Cuando agregues un lugar te lo mostraremos aquí, revisa el mapa y descubre nuevos lugares</p>
         
         <img src="/img/mapa.jpg" alt="Mapa">
-        <img src="/img/mapa.jpg" alt="Mapa">
 
         <a class="boton-ir-mapa" href="#">Ir al Mapa</a>
-
-        <h4>Preferencias</h4>
-        <ul class="preferencias-lista">
-            <li th:each="preferencia : ${preferencias}" class="preferencia-item">
-                <span th:text="${preferencia}"></span>
-                <form th:action="@{/perfil/preferencia/eliminar}" method="POST">
-                    <input type="hidden" name="preferencia" th:value="${preferencia}">
-                    <button class="btn-eliminar-preferencia" type="submit">Eliminar</button>
-                </form>
-            </li>
-        </ul>
-        
-        <a href="#" class="boton-editar-preferencia" id="editar-preferencia-btn">Añadir Preferencia</a>
     </section>
 
     <footer>
@@ -100,6 +91,7 @@
         </div>
     </section>
 
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/Perfil.js}"></script>
 </body>
 </html>

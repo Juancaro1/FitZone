@@ -28,51 +28,48 @@ ul {
 }
 
 
-nav {
-    background-color: #228B22;
-    color: white;
+.navbar {
+    background-color: #208317;
+    height: 90px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    height: 65px;
-    box-sizing: content-box;
+    padding: 0 20px;
+    position: relative;
+    top: 0;
+    width: 100%;
 }
 
-nav img {
-    width: 130px;
-    height: 130px;
+.collapse {
+    display: flex;
+    justify-content: end;
+    gap: 20px; /* Separar los enlaces */
+    font-size: 20px;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+.container-fluid{
     background-color: transparent;
-    margin-right: 20px;
 }
 
-.fitzone {
-    margin-left: 20px;
-    height: 100%;
-    padding: 5px;
-    width: 4%;
+.logo1{
+    position: absolute;
+    margin-top: 15px;
+    left: 0;
+    width: 180px;
+    height: 180px;
 }
 
-.marca {
-    margin-left: -60%;
-    width: 200px;
-    height: 50px;
+.logo2{
+    margin-left: 100px;
 }
 
-nav ul {
-    display: flex;
-    align-items: center;
-}
-
-nav ul li {
-    margin-right: 20px;
-}
-
-nav a {
-    color: white;
-    font-weight: bold;
-    font-size: 17px;
-}
 
 
 section {

@@ -1,6 +1,7 @@
 package com.proyecto.servicios;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,24 +52,13 @@ public class ServiciosUsuarios {
         return this.repositorioUsuarios.save(usuario);
     }
 
-    public void eliminarPreferencia(Usuario usuario, String preferencia) {
-        List<String> preferencias = usuario.getPreferencias();
-        if (preferencias != null) {
-            preferencias.remove(preferencia);
-            usuario.setPreferencias(preferencias);
-            // Actualizar el usuario con las preferencias modificadas en la base de datos
-            this.repositorioUsuarios.save(usuario); // Asumiendo que tienes un repositorio de usuarios
-        }
+    public String mostrarPreferencia(Long id){
+        Usuario usuario = this.repositorioUsuarios.findById(id)
+            .orElseThrow(() -> new NoSuchElementException("Usuario no encontrado con id: " + id));
+    return usuario.getPreferencia();
     }
+
     
-
-
-    public void agregarPreferencia(Usuario usuario, String preferencia) {
-        usuario.addPreferencia(preferencia); // Agrega la preferencia a la lista
-        actualizarPreferencia(usuario); // Luego guarda los cambios
-    }
-
-    //Validamos en el registro si coinciden las contrasenas 
 	public BindingResult validarRegistro(BindingResult validaciones, Usuario usuario) {
 		if(!usuario.getClave().equals(usuario.getConfirmarClave())) {
 			validaciones.rejectValue("confirmarClave", "clavedNoCoincide", "Las contrasenas no coinciden.");
@@ -76,7 +66,7 @@ public class ServiciosUsuarios {
 		return validaciones;
 	}
 	
-	//Validamos en el login si encontramos el email de usuario Y si coinciden las contrasenas
+	
 	public BindingResult validarLogin(BindingResult validaciones, LoginUsuario usuario) {
 		Usuario usuarioDb = this.obtenerPorEmail(usuario.getEmail());
 		if(usuarioDb == null) {

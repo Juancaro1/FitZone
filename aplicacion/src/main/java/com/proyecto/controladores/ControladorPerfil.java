@@ -118,45 +118,7 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
         modelo.addAttribute("usuario", usuario);
         modelo.addAttribute("preferencia", preferencia); 
 
-        return "preferencias";
+        return "preferencia";
     }
-
-    @PostMapping("/perfil/preferencias/guardar/")
-    public String guardarPreferencia(HttpSession sesion, @RequestParam("preferencia") String preferencia) {
-        String emailUsuario = (String) sesion.getAttribute("emailUsuario");
-
-        if (emailUsuario == null) {
-            return "redirect:/login";
-        }
-
-        Usuario usuario = this.serviciosUsuarios.obtenerPorEmail(emailUsuario);
-        if (usuario == null) {
-            return "redirect:/login"; 
-        }
-
-        sesion.setAttribute("usuario", usuario);
-
-        return "redirect:/perfil";
-    }
-
-@PostMapping("/perfil/preferencia/eliminar")
-public String eliminarPreferencia(HttpSession sesion, @RequestParam("preferencia") String preferencia) {
-    String emailUsuario = (String) sesion.getAttribute("emailUsuario");
-
-    if (emailUsuario == null) {
-        return "redirect:/login"; 
-    }
-
-    Usuario usuario = this.serviciosUsuarios.obtenerPorEmail(emailUsuario);
-    if (usuario == null) {
-        return "redirect:/login"; 
-    }
-
-    usuario = this.serviciosUsuarios.obtenerPorEmail(emailUsuario);
-
-    sesion.setAttribute("usuario", usuario);
-
-    return "redirect:/perfil";
-}
 
 }

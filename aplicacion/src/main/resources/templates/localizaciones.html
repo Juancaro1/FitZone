@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/styleLocalizaciones.css}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <title>Document</title>
+    <title>Localizacones</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
@@ -29,26 +29,18 @@
 
       <div class="container-portada">
         <img src="https://claudia.abril.com.br/wp-content/uploads/2022/08/GettyImages-1412753235.jpg?quality=85&strip=info" style="border-radius: 10px;" class="img-fluid" alt="Imagen portada">
-        <form class="d-flex" style="border-radius: 10px;" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" style="background-color: green; color: white;" type="submit">Search</button>
-        </form>
+        <form action="/localizaciones/buscar" method="get" class="d-flex" style="margin-bottom: 20px;">
+          <input class="form-control me-2" type="text" name="nombre" placeholder="Buscar localizaciones" aria-label="Buscar">
+          <button class="btn btn-outline-success" type="submit" style="background-color: green; color: white;">Buscar</button>
+      </form>
         <p>"El mejor momento para entrenar es ahora, y el mejor lugar es el que te rodea."</p>
-    </div>
-    
-
-      <div class="opciones">
-        <ul class="opciones-links">
-            <li><a href="#">Calistenia</a></li>
-            <li><a href="#">Cardio</a></li>
-        </ul>
       </div>
-
+    
       
       <div class="container-localizaciones" style="max-width: 90%; height: auto;">
         <div class="row">
-            <div th:each="localizacion : ${localizaciones}" class="col-3 mb-4"  
-                 th:data-cordx="${localizacion.cordX}"  
+            <div th:each="localizacion : ${localizaciones}" class="col-3 mb-4"
+                 th:data-cordx="${localizacion.cordX}"
                  th:data-cordy="${localizacion.cordY}">
                 <div class="card" style="height: 400px;">
                     <img th:src="'/imagenesLocalizaciones/' + ${localizacion.imagen}" class="card-img-top" th:alt="${localizacion.nombre}">

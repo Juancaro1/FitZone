@@ -14,8 +14,6 @@
 </head>
 <body>
     
-   
-
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <img class="logo1" th:src="@{/img/Diseño sin título.png}" alt="logo">
@@ -32,16 +30,8 @@
           </div>
         </div>
       </nav>
-    <!-- <nav>
-        <img class="fitzone" src="/img/Logo.png" alt="FitZone Logo">
-        <img src="/img/4.png" class="marca" alt="logo-fitzone">
-        <ul>
-            <li><a href="/perfil">Perfil</li>
-            <li><a href="/localizaciones/agregar">Añadir Spot</a></li>
-            <li><a href="/localizaciones">Localizaciones</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-    </nav> -->
+
+
     <div class="contenedor-formulario">
     <form th:action="@{/guardar}" method="POST" th:object="${localizacion}" enctype="multipart/form-data">
 		<div class="card-add-localizacion">
@@ -72,8 +62,6 @@
 	</form>
 </div>
 
-
-    <!-- Enlazar el archivo JavaScript -->
     <script th:src="@{/js/index.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>

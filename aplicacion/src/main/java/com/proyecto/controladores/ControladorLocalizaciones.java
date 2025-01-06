@@ -106,6 +106,19 @@ public String guardarLocalizacion(HttpSession sesion,
     return "redirect:/localizaciones";
 }
 
+@GetMapping("/localizaciones/buscar")
+public String buscarLocalizaciones(HttpSession sesion, Model modelo, 
+        @RequestParam("nombre") String nombre) {
+    Long idUsuario = (Long) sesion.getAttribute("idUsuario");
+    if (idUsuario == null) {
+        return "redirect:/login";
+    }
+
+    List<Localizacion> localizaciones = servicioLocalizaciones.buscarPorNombre(nombre);
+    modelo.addAttribute("localizaciones", localizaciones);
+    modelo.addAttribute("usuario", serviciosUsuarios.obtenerPorId(idUsuario));
+    return "localizaciones";
+}
 
 	
 	@GetMapping("/localizaciones/editar/{id}")

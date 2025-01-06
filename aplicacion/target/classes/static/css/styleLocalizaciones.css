@@ -6,6 +6,11 @@
     font-family: Arial, sans-serif;
 }
 
+body{
+    background: rgb(59,155,49);
+    background: linear-gradient(0deg, rgba(59,155,49,1) 0%, rgba(98,224,84,1) 66%);
+}
+
 /* Navbar */
 .navbar {
     background-color: #208317;
@@ -118,9 +123,12 @@
     margin-top: 50px;
     margin-left: 5%;
     max-width: 90%;
+    margin-bottom: 20px;
 }
 
 .card {
+    margin-top: 20px;
+    margin-left: 70px;
     width: 18rem;
     height: auto;
     border-radius: 10px;

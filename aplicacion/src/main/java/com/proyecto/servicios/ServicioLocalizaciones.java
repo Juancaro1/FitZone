@@ -34,4 +34,8 @@ public class ServicioLocalizaciones {
     public void eliminarLocalizacion(Long id){
         this.repositorioLocalizaciones.deleteById(id);
     }
+
+    public List<Localizacion> buscarPorNombre(String nombre) {
+        return this.repositorioLocalizaciones.buscarPorNombre(nombre);
+    }
 }

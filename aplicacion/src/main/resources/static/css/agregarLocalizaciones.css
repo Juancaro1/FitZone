@@ -135,12 +135,12 @@ form .card-add-localizacion input{
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Suavidad de la animación */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
 }
 
 .boton-add-localizacion:hover {
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); 
 }
 
 

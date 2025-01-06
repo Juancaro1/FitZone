@@ -43,7 +43,7 @@
         </ul>
     </nav> -->
     <div class="contenedor-formulario">
-    <form th:action="@{/guardar}" method="POST" th:object="${localizacion}">
+    <form th:action="@{/guardar}" method="POST" th:object="${localizacion}" enctype="multipart/form-data">
 		<div class="card-add-localizacion">
 			<label for="nombre">Nombre:</label>
 			<input type="text" id="nombre" th:field="*{nombre}" class="form-control"/>

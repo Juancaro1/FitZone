@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,9 +39,8 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
         return "redirect:/login";
     }
 
-    List<String> preferencias = usuario.getPreferencias();
     modelo.addAttribute("usuario", usuario);
-    modelo.addAttribute("preferencias", preferencias);
+    modelo.addAttribute("preferencias", usuario.getPreferencia());
 
     return "perfil"; 
 }
@@ -104,7 +102,7 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
 
 
     @GetMapping("/perfil/preferencias")
-    public String mostrarPreferencias(@RequestParam ("preferencia") String preferencia,Model modelo, HttpSession sesion) {
+    public String mostrarPreferencias(@RequestParam ("preferencia") String preferencia, Model modelo, HttpSession sesion) {
         String emailUsuario = (String) sesion.getAttribute("emailUsuario");
 
         if (emailUsuario == null) {
@@ -116,9 +114,9 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
             return "redirect:/login";
         }
 
-        List<String> preferencias = usuario.getPreferencias(); 
+        
         modelo.addAttribute("usuario", usuario);
-        modelo.addAttribute("preferencias", preferencias); 
+        modelo.addAttribute("preferencia", preferencia); 
 
         return "preferencias";
     }
@@ -135,10 +133,6 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
         if (usuario == null) {
             return "redirect:/login"; 
         }
-
-        usuario.addPreferencia(preferencia);
-
-        this.serviciosUsuarios.actualizarPreferencia(usuario);
 
         sesion.setAttribute("usuario", usuario);
 
@@ -157,9 +151,6 @@ public String eliminarPreferencia(HttpSession sesion, @RequestParam("preferencia
     if (usuario == null) {
         return "redirect:/login"; 
     }
-
-
-    this.serviciosUsuarios.eliminarPreferencia(usuario, preferencia);
 
     usuario = this.serviciosUsuarios.obtenerPorEmail(emailUsuario);
 

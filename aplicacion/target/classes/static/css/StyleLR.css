@@ -94,7 +94,7 @@
   left: 50%;
   justify-content: center;
   width: 35%;
-  height: auto;
+  height: 71%;
   position: absolute;
   margin-top: 3%;
   margin-left: 8%; 
@@ -200,7 +200,6 @@ width: 300px;
 
 
 
-
 .container .form h2 {
   color: #ffffff;
   font-family: 'Kdam Thmor Pro';font-size: 22px;
@@ -222,7 +221,7 @@ width: 300px;
   padding: 12px 10px 12px 48px;
   width: 100%;
   border-radius: 20px;
-  font-weight: 300 ; 
+  font-width: 300 ; 
   font-size: 1em;
   transition: 0.5s;
 }
@@ -251,7 +250,7 @@ width: 300px;
   padding: 12px 10px 12px 48px;
   width: 100%;
   border-radius: 20px;
-  font-weight: 300 ; 
+  font-width: 300 ; 
   font-size: 1em;
   transition: 0.5s;
 }
@@ -271,101 +270,29 @@ width: 300px;
   color: #ffffff;
 }
 
- .btn {
-  margin-top: 50px;
-  left: 68%;
-  bottom:5%;
-  cursor: pointer;
-  color: #ffffff;
-  background-color: #2bdf17;
-  font-family: 'Kdam Thmor Pro';font-size: 22px;
-  font-size: 43.18920135498047px;
-  line-height: 71.08px;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-  height:15% ;
-  border-radius: 11%;
-  padding: 1%;
-  border: none;
-  outline: none;
-
+ .registro {
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 5px;
+  width: 50%;
+  text-align: center;
+  background-color: #800000;
+  color: white;
 }
 
-.btn::after, .btn::before {
-content: "";
-position: absolute;
-opacity: 0.3;
-background-color: #3b9b31;
-border-radius:inherit ;
-width: 100%;
-height: 100%;
-left: 0;
-bottom: 0;
-z-index: -1;
-transition: transformation 0.3s ease;
-}
-
-.btn:hover {
-transform: translate(-12px,-12px);
-}
-
-.btn:hover::after {
-  transform: translate(6px,6px);
-}
-.btn:hover::before {
-  transform: translate(12px,12px);
-}
 
 .login-boton{
-  margin-top: 50px;
-  left: 68%;
-  bottom:5%;
-  cursor: pointer;
-  color: #ffffff;
-  background-color: #2bdf17;
-  font-family: 'Kdam Thmor Pro';font-size: 22px;
-  font-size: 43.18920135498047px;
-  line-height: 71.08px;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-  height:75px ;
-  border-radius: 11%;
-  padding: 1%;
-  border: none;
-  outline: none;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    background-color: #800000;
+    color: white;
 }
 
-.login-boton::after, .login-boton::before{
-position: absolute;
-opacity: 0.3;
-background-color: #3b9b31;
-border-radius:inherit ;
-width: 100%;
-height: 100%;
-left: 0;
-bottom: 0;
-z-index: -1;
-transition: transformation 0.3s ease;
-}
 
-.login-boton:hover {
-  transform: translate(-12px,-12px);
-  }
-  
-  .login-boton:hover::after {
-    transform: translate(6px,6px);
-  }
-  .login-boton:hover::before {
-    transform: translate(12px,12px);
-  }
 
-.caja_preferencia{
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  background-color: white;
-  border-radius: 20px;
-}
 
 
 

@@ -9,9 +9,52 @@
 
 body{
     overflow-y: scroll;
+    background: url(https://tipsparatuviaje.com/wp-content/uploads/2019/04/bosque-de-san-juan-de-aragon.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-nav {
+.navbar {
+    background-color: #208317;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+.collapse {
+    display: flex;
+    justify-content: end;
+    gap: 20px; 
+    font-size: 20px;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover {
+    color: red;
+}
+.container-fluid{
+    background-color: transparent;
+}
+
+.logo1{
+    position: absolute;
+    margin-top: 15px;
+    left: 0;
+    width: 180px;
+    height: 180px;
+}
+
+.logo2{
+    margin-left: 100px;
+}
+/* nav {
     background-color: #228B22;
     color: white;
     display: flex;
@@ -20,54 +63,19 @@ nav {
     padding: 10px 20px;
     height: 65px;
     box-sizing: content-box;
-}
+} */
 
-nav img {
+/* nav img {
     width: 130px;
     height: 130px;
     background-color: transparent;
     margin-right: 20px;
-}
+} */
 
-.fitzone {
-    margin-left: 20px;
-    height: 100%;
-    padding: 5px;
-    width: 4%;
+.contenedor-formulario{
+    position: relative;
+    margin-top: 420px;
 }
-
-.marca {
-    margin-left: -60%;
-    width: 200px;
-    height: 50px;
-}
-
-nav ul {
-    display: flex;
-    align-items: center;
-}
-
-nav ul li {
-    margin-right: 20px;
-}
-
-nav a {
-    color: white;
-    font-weight: bold;
-    font-size: 17px;
-}
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 
 .card-add-localizacion {
     align-items: center;
@@ -79,8 +87,8 @@ ul {
     background: #3b9b31;
     border-radius: 30px;
     width: 35%;
-    height: 71%;
-    position: absolute; 
+    height: auto;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -103,11 +111,18 @@ form .card-add-localizacion input{
     font-size: 1em;
     transition: 0.5s;
 }
+
 #map{
     border-radius: 10px;
-    width: 450px; 
-    height: 350px;
+    margin: 20px;
+    width: 90%; 
+    height: 300px;
 }
+
+.ubica{
+    margin-top: 20px;
+}
+
 .boton-add-localizacion {
     background-color: #56c44a;
     color: #ffffff;
@@ -120,13 +135,12 @@ form .card-add-localizacion input{
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Suavidad de la animación */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
 }
 
 .boton-add-localizacion:hover {
-    transform: translateY(-3px); /* Levanta el botón ligeramente */
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); 
 }
 
 

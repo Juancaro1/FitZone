@@ -58,14 +58,10 @@ public class ControladorLocalizaciones {
 			return "redirect:/login";
 		}
 		
-		Localizacion localizacion = null;
-		try {
-			localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
-			modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(idUsuario));
-			modelo.addAttribute("localizacion", localizacion);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		Localizacion localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
+		modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(id));
+		modelo.addAttribute("localizacion", localizacion);
+		
 		return "detalleLocalizacion";
 	}
 	

@@ -7,8 +7,7 @@
 }
 
 body{
-    background: rgb(59,155,49);
-    background: linear-gradient(0deg, rgba(59,155,49,1) 0%, rgba(98,224,84,1) 66%);
+    background-color: #F5F5DC;
 }
 
 /* Navbar */

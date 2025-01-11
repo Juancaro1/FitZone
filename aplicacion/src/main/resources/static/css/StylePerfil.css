@@ -4,7 +4,6 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #fff;
-    color: #333;
 }
 
 a {
@@ -92,7 +91,6 @@ span {
     margin: 10px 0;
     font-weight: bold;
     font-size: 16px;
-    color: #333;
 }
 
 
@@ -191,54 +189,32 @@ a.boton-preferencia:hover {
 }
 
 
-footer {
-    background-color: #228B22;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
+
+.footer {
+    background-color: #208317; /* Fondo oscuro */
+    color: white; /* Texto blanco */
     padding: 15px 0;
-    flex-direction: column;
+    height: 80px;
+    border-top: 2px solid #555; /* Línea decorativa */
+    text-align: center;
 }
 
-footer ul {
+.footer .social-icons {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    gap: 20px;
 }
 
-footer ul li {
-    margin: 0 10px;
-    font-size: 14px;
+.footer .social-icons a {
+    font-size: 24px; /* Tamaño de los íconos */
+    color: white; /* Color inicial de los íconos */
+    transition: color 0.3s ease;
 }
 
-.contactos {
-    font-size: 18px;
-    margin: 7px 0;
+.footer .social-icons a:hover {
+    color: #00aced; /* Cambia de color al pasar el cursor (azul claro) */
 }
 
-footer a {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 0 5px;
-    transition: transform 0.3s ease;
-}
-
-footer a:hover {
-    transform: scale(1.1);
-}
-
-footer a.logo-facebook {
-    background-image: url('https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png');
-}
-
-footer a.logo-instagram {
-    background-image: url('https://static.vecteezy.com/system/resources/previews/018/930/413/original/instagram-logo-instagram-icon-transparent-free-png.png');
-}
 
 
 #editar-perfil-modal {

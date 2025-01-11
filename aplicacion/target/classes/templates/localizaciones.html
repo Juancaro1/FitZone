@@ -31,7 +31,7 @@
       <div class="container-portada">
         <img src="https://claudia.abril.com.br/wp-content/uploads/2022/08/GettyImages-1412753235.jpg?quality=85&strip=info" style="border-radius: 10px;" class="img-fluid" alt="Imagen portada">
         <form action="/localizaciones/buscar" method="get" class="d-flex" style="margin-bottom: 20px;">
-          <input class="form-control me-2" type="text" name="nombre" placeholder="Buscar localizaciones" aria-label="Buscar">
+          <input style="border-radius: 10px;" class="form-control me-2" type="text" name="nombre" placeholder="Buscar localizaciones" aria-label="Buscar">
           <button class="btn btn-outline-success" type="submit" style="background-color: green; color: white;">Buscar</button>
       </form>
         <p>"El mejor momento para entrenar es ahora, y el mejor lugar es el que te rodea."</p>
@@ -46,9 +46,9 @@
                 <div class="card" style="height: 400px;">
                     <img th:src="'/imagenesLocalizaciones/' + ${localizacion.imagen}" class="card-img-top" th:alt="${localizacion.nombre}">
                     <div class="card-body">
-                        <h5 class="card-title" th:text="${localizacion.nombre}"></h5>
+                        <h5 style="font-size: 22px; font-weight: bold;" class="card-title" th:text="${localizacion.nombre}"></h5>
                         <p class="card-text" th:text="${localizacion.descripcion}"></p>
-                        <p class="card-text" th:text="'Dirección: ' + ${localizacion.direccion}"></p>
+                        <p style="margin-top: 30px; font-size: 18px;" class="card-text" th:text="'Dirección: ' + ${localizacion.direccion}"></p>
                     </div>
                 </div>
             </div>

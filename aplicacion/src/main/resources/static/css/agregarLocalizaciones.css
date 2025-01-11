@@ -34,6 +34,16 @@ body{
     font-size: 20px;
 }
 
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: #00aced;
+    border-radius: 10px;
+    color: white;
+    transition: background-color 0.8s ease;
+}
 
 .logo1{
     position: absolute;
@@ -46,23 +56,7 @@ body{
 .logo2{
     margin-left: 100px;
 }
-/* nav {
-    background-color: #228B22;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: 65px;
-    box-sizing: content-box;
-} */
 
-/* nav img {
-    width: 130px;
-    height: 130px;
-    background-color: transparent;
-    margin-right: 20px;
-} */
 
 .contenedor-formulario{
     position: relative;

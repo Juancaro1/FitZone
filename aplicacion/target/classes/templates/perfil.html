@@ -29,20 +29,28 @@
 
     <section>
         <img id="foto-perfil-preview" th:src="@{'/FotoPerfiles/' + ${usuario.imagen}}" alt="Imagen de perfil">
-        <p class="nombre-usuario" th:text="${usuario.nombre + ' ' + usuario.apellido}" style="font-size: 25px;">Nombre Usuario</p>
+        <p class="nombre-usuario" th:text="${usuario.nombre + ' ' + usuario.apellido}" style="font-size: 25px; font-weight: bold;">Nombre Usuario</p>
         <a class="editar-perfil" href="#" id="editar-perfil-btn">Editar Perfil</a>
 
-        <ul>
-            <li><a href="#">Sobre mi: <span th:text="${usuario.sobreMi}" style="color: black;">No disponible</span></a></li> 
-            <li><a href="#">Preferencia: <span th:text="${preferencias}" style="color: black;">No disponible</span></a></li>
+        <ul style="display: flex; flex-direction: column;">
+            <li style="font-weight: bold; font-size: 22px;">Sobre mi:</li> 
+            <span th:text="${usuario.sobreMi}" style="color: black;">No disponible</span>
+        </ul>
+        <ul style="display: flex; flex-direction: column;">
+            <li style="font-weight: bold; font-size: 22px;">Preferencia:</li>
+            <span th:text="${preferencias}" style="color: black;">No disponible</span>
         </ul>
 
+        <div class="container-mapa" style="width: 60%;" >
         <h4>Spots agregados por ti</h4>
-        <p>Cuando agregues un lugar te lo mostraremos aquí, revisa el mapa y descubre nuevos lugares</p>
-        
+        <p style="font-size: 16px; font-weight: bold; width: 100%;">Cuando agregues un lugar te lo mostraremos aquí, revisa el mapa y descubre nuevos lugares</p>
+
         <img src="/img/mapa.jpg" alt="Mapa">
 
         <a class="boton-ir-mapa" href="#">Ir al Mapa</a>
+        </div>
+
+
     </section>
 
     <section id="editar-perfil-modal" style="display: none;">

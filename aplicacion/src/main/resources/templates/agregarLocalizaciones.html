@@ -47,12 +47,14 @@
 			<textarea type="text" id="descripcion" th:field="*{descripcion}" class="form-control"></textarea>
 			<span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}" class="error-text"></span>
 
-            <label for="imagen">Agrega una imagen de la localización:</label>
-            <input type="file" id="imagen" name="imagen" class="form-control"/>
+      <label for="imagen">Agrega una imagen de la localización:</label>
+      <input type="file" id="imagen" name="imagen" class="form-control"/>
 
 
-            <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
-            <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>
+      <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
+      <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>
+
+      <input style="display:none" type="number" id="fotos" th:field="*{fotos}"/>
 
 			<label class="ubica">Ubica la localización en el mapa:</label>
 			<div id="map" class="mapa"></div>

@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/css/styles.css}"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-crossorigin=""></script>
-<title>Ubicacion</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/css/detalleLocalizaciones.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Ubicacion</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <img class="logo1" th:src="@{/img/Diseño sin título.png}" alt="logo">
           <img class="navbar-brand logo2" th:src="@{/img/4.png}" alt="nombre-pagina">
@@ -26,37 +23,78 @@ crossorigin=""></script>
             <div class="navbar-nav">
               <a class="nav-link" th:href="@{/localizaciones/agregar}">Anadir spot</a>
               <a class="nav-link" th:href="@{/perfil}">Mi Perfil</a>
-              <a class="nav-link" th:href="@{/logout}">Logout</a>
+              <a class="nav-link" th:href="@{/logout}"><i class="fa-solid fa-right-to-bracket"></i></a>
             </div>
           </div>
         </div>
       </nav>
-	
 
-	<div class="container-detalles">
-		<h1 class="nombre-localizacion" th:text="${localizacion.nombre}"></h1>
-		<img th:src="'/imagenesLocalizaciones/' + ${localizacion.imagen}" alt="Imagen" class="img-fluid">
-		<p th:text="${localizacion.descripcion}" class="descripcion"></p>
-		<p class="direccion"><i class="fas fa-map-marker-alt"></i> Dirección: <span th:text="${localizacion.direccion}" style="margin-left: 10px;"></span></p>
+
+    <div class="row cuerpoLocalizacion">
+        <!--TARJETAS-->
+        <div class="col-8 infoLocalizacion">
+            <!--INFO SPOT-->
+            <div>
+                <img class="col-5 imgLocalizacion" th:src="'/imagenesLocalizaciones/' + ${localizacion.imagen}" th:alt="${localizacion.nombre}"/>
+                <div class="col-7">
+                    <h1 th:text="${localizacion.nombre}"></h1>
+                    <p th:text="${localizacion.descripcion}"></p>
+                    <p th:text="'Dirección: ' + ${localizacion.direccion}"></p>
+                    <p id="coordenadas" th:data-cordx="${localizacion.cordX}"
+                    th:data-cordy="${localizacion.cordY}"></p>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2 divComentarios">
+            <div class="formularioResena">
+                <form th:action="@{/procesa/crear}" method="POST" th:object="${resena}" enctype="multipart/form-data">
+                    <div class="rating">
+                        <input type="radio" th:field="*{puntuacion}" value="5" id="sel-rating-5"><label for="sel-rating-5">5</label>
+                        <input type="radio" th:field="*{puntuacion}" value="4" id="sel-rating-4" checked><label for="sel-rating-4">4</label>
+                        <input type="radio" th:field="*{puntuacion}" value="3" id="sel-rating-3"><label for="sel-rating-3">3</label>
+                        <input type="radio" th:field="*{puntuacion}" value="2" id="sel-rating-2"><label for="sel-rating-2">2</label>
+                        <input type="radio" th:field="*{puntuacion}" value="1" id="sel-rating-1"><label for="sel-rating-1">1</label>
+                    </div>
+                    <textarea id="comentario" th:field="*{comentario}" class="form-control" rows="2" style="resize:none;"></textarea>
+                    <input type="hidden" th:field="*{localizaciones.id}" th:value="${localizacion.id}" /> 
+                    <input class="botonAgregar" type="submit" value="Agregar Comentario"/>
+                </form>
+            </div>
+            <div class="col-12 comentarioLocalizacion" th:each="resena : ${localizacion.resenas}">
+                <ul>
+                    <li class="fa fa-star checked"></li>
+                    <li th:if="${resena.puntuacion &lt 2}" class="fa fa-star"></li>
+                    <li th:unless="${resena.puntuacion &lt 2}" class="fa fa-star checked"></li>
+                    <li th:if="${resena.puntuacion &lt 3}" class="fa fa-star"></li>
+                    <li th:unless="${resena.puntuacion &lt 3}" class="fa fa-star checked"></li>
+                    <li th:if="${resena.puntuacion &lt 4}" class="fa fa-star"></li>
+                    <li th:unless="${resena.puntuacion &lt 4}" class="fa fa-star checked"></li>
+                    <li th:if="${resena.puntuacion &lt 5}" class="fa fa-star"></li>
+                    <li th:unless="${resena.puntuacion &lt 5}" class="fa fa-star checked"></li>
+                </ul>
+                <h5 th:text="${resena.comentario}"></h5>
+            </div>
+        </div>
     </div>
 
-	
-
-	<footer class="footer text-white py-3">
+    <footer class="footer text-white py-3">
         <div class="container d-flex justify-content-center align-items-center gap-5">
             <span>Contacto: contacto@tuemail.com</span>
             <div class="social-icons">
-                <a href="https://www.facebook.com" target="_blank" class="text-white me-3">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com" target="_blank" class="text-white">
-                    <i class="bi bi-instagram"></i>
-                </a>
+            <a href="https://www.facebook.com" target="_blank" class="text-white me-3">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="text-white">
+                <i class="bi bi-instagram"></i>
+            </a>
             </div>
         </div>
     </footer>
-	
-	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-	<script th:src="@{/js/localizaciones.js}"></script>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/detalleLocalizacion.js}"></script>
 </body>
 </html>

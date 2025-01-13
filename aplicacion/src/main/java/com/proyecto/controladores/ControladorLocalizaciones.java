@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.proyecto.modelos.Localizacion;
+import com.proyecto.modelos.Resena;
 import com.proyecto.servicios.ServicioLocalizaciones;
 import com.proyecto.servicios.ServiciosUsuarios;
 
@@ -61,6 +62,10 @@ public class ControladorLocalizaciones {
 		Localizacion localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
 		modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(id));
 		modelo.addAttribute("localizacion", localizacion);
+
+		Resena nuevaResena = new Resena();
+		nuevaResena.setLocalizaciones(localizacion);
+		modelo.addAttribute("resena", nuevaResena);
 		
 		return "detalleLocalizacion";
 	}
@@ -76,7 +81,7 @@ public class ControladorLocalizaciones {
 	}
 	
 	@PostMapping("/guardar")
-public String guardarLocalizacion(HttpSession sesion,
+	public String guardarLocalizacion(HttpSession sesion,
         @Valid @ModelAttribute("localizacion") Localizacion localizacion,
         BindingResult validaciones,
         @RequestParam("imagen") MultipartFile imagen) {

@@ -89,6 +89,7 @@ public class ControladorLocalizaciones {
     if (idUsuario == null) {
         return "redirect:/login";
     }
+
     if (!imagen.isEmpty()) {
         try {
             String uploadDir = "C:/Localizaciones/imagenesLocalizaciones/";

@@ -43,6 +43,7 @@
             <div th:each="localizacion : ${localizaciones}" class="col-3 mb-4"
                 th:data-cordx="${localizacion.cordX}"
                 th:data-cordy="${localizacion.cordY}">
+                <a th:href="@{'/localizaciones/detalle/' + ${localizacion.id}}" style="text-decoration: none;">
                 <div class="card" style="height: 400px;">
                     <img th:src="'/imagenesLocalizaciones/' + ${localizacion.imagen}" class="card-img-top" th:alt="${localizacion.nombre}">
                     <div class="card-body">
@@ -51,6 +52,7 @@
                         <p style="margin-top: 30px; font-size: 18px;" class="card-text" th:text="'Dirección: ' + ${localizacion.direccion}"></p>
                     </div>
                 </div>
+              </a>
             </div>
         </div>
     </div>

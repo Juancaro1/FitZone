@@ -55,7 +55,7 @@ public class Usuario {
     private List<Resena> resenas;
 
     private String sobreMi;
-
+    
 
 
     public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, String preferencia, String imagen) {

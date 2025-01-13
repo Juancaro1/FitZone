@@ -25,10 +25,12 @@ body{
     width: 100%;
 }
 
+
 .collapse {
+    color: white;
     display: flex;
     justify-content: end;
-    gap: 20px; 
+    gap: 20px;
     font-size: 20px;
 }
 
@@ -37,10 +39,10 @@ body{
 }
 
 .nav-link:hover {
-    color: red;
-}
-.container-fluid{
-    background-color: transparent;
+    background-color: #00aced;
+    border-radius: 10px;
+    color: white;
+    transition: background-color 0.8s ease;
 }
 
 .logo1{
@@ -54,23 +56,7 @@ body{
 .logo2{
     margin-left: 100px;
 }
-/* nav {
-    background-color: #228B22;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: 65px;
-    box-sizing: content-box;
-} */
 
-/* nav img {
-    width: 130px;
-    height: 130px;
-    background-color: transparent;
-    margin-right: 20px;
-} */
 
 .contenedor-formulario{
     position: relative;
@@ -142,5 +128,3 @@ form .card-add-localizacion input{
 .boton-add-localizacion:hover {
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); 
 }
-
-

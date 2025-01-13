@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -7,6 +6,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
     crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
             crossorigin=""></script>
@@ -23,9 +23,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" th:href="@{/localizaciones/agregar}">Anadir spot</a>
-              <a class="nav-link" th:href="@{/perfil}">Mi Perfil</a>
-              <a class="nav-link" th:href="@{/logout}">Logout</a>
+              <a style="color: white;" class="nav-link" th:href="@{/localizaciones}">Localizaciones</a>
+              <a style="color: white;" class="nav-link" th:href="@{/perfil}">Mi Perfil</a>
+              <a style="color: white;" class="nav-link" th:href="@{/logout}"><i class="fa-solid fa-right-to-bracket"></i></a>
             </div>
           </div>
         </div>
@@ -47,14 +47,12 @@
 			<textarea type="text" id="descripcion" th:field="*{descripcion}" class="form-control"></textarea>
 			<span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}" class="error-text"></span>
 
-      <label for="imagen">Agrega una imagen de la localización:</label>
-      <input type="file" id="imagen" name="imagen" class="form-control"/>
+            <label for="imagen">Agrega una imagen de la localización:</label>
+            <input type="file" id="imagen" name="imagen" class="form-control"/>
 
 
-      <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
-      <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>
-
-      <input style="display:none" type="number" id="fotos" th:field="*{fotos}"/>
+            <input style="display:none" type="text" id="cordX" th:field="*{cordX}"/>
+            <input style="display:none" type="text" id="cordY" th:field="*{cordY}"/>
 
 			<label class="ubica">Ubica la localización en el mapa:</label>
 			<div id="map" class="mapa"></div>

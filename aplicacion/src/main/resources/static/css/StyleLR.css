@@ -10,8 +10,7 @@
   box-sizing: border-box;
 
  }
-
-   .body {
+   body {
     background-color:  rgb(100, 100, 100) ;
   }
 
@@ -94,7 +93,7 @@
   left: 50%;
   justify-content: center;
   width: 35%;
-  height: 71%;
+  height: 75%;
   position: absolute;
   margin-top: 3%;
   margin-left: 8%; 
@@ -271,24 +270,30 @@ width: 300px;
 }
 
  .registro {
-  padding: 15px;
+  padding: 10px;
   margin-top: 20px;
   border-radius: 5px;
   width: 50%;
   text-align: center;
-  background-color: #800000;
-  color: white;
+  background-color: lightgreen;
+  color: black;
+  font-size: 18px;
 }
 
 
 .login-boton{
-    padding: 15px;
+    padding: 10px;
     margin-top: 20px;
     border-radius: 5px;
-    width: 50%;
+    width: 30%;
     text-align: center;
-    background-color: #800000;
-    color: white;
+    background-color: lightgreen;
+    color: black;
+    font-size: 18px;
+}
+
+.form-control{
+  border: 2px solid black;
 }
 
 

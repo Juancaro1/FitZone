@@ -57,25 +57,31 @@
 		</div>
 
 		<div class="caja_genero">
-		<div class="caja_genero"></div>
+		<i class="fa-solid fa-user"></i>
 		<label for="genero">Género:</label>
-		<select id="genero" th:field="*{genero}" class="form-control">
+		<select id="genero" th:field="*{genero}" class="form-control" style="margin-left: 5px;">
 			<option value="Hombre">Hombre</option>
 			<option value="Mujer">Mujer</option>
 			<option value="Otro">Prefiero no decirlo</option>
 		</select>
 		<span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="error-text"></span>
 		</div>
+		<div class="caja_genero">
+		<i class="fa-solid fa-dumbbell"></i>
 		<label for="preferencia">Preferencia:</label>
-		<div class="caja_preferencia">
-			
-			<span>Calistenia</span>
-			<input type="radio" name="preferencia" value="Calistenia">
-			<label for="preferencia"></label>
-			<span>Cardio</span>
-			<input type="radio" name="preferencia" value="Cardio">
+		<select id="preferencia" th:field="*{preferencia}" class="form-control" style="margin-left: 5px;">
+			<option value="Calistenia">Calistenia</option>
+			<option value="Cardio">Cardio</option>
+		</select>
+		<span th:if="${#fields.hasErrors('preferencia')}" th:errors="*{preferencia}" class="error-text"></span>
 		</div>
-		
+	
+		<!-- <label for="preferencia">Preferencia:</label>
+        <span>Calistenia</span>
+        <input type="radio" name="preferencia" value="Calistenia">
+        <label for="preferencia"></label>
+        <span>Cardio</span>
+        <input type="radio" name="preferencia" value="Cardio"> -->
 
 		<div class="caja_input">
 		<i class="fa-solid fa-lock"></i>

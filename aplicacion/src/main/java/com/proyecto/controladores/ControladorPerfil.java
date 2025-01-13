@@ -39,6 +39,7 @@ public String mostrarPerfil(HttpSession sesion, Model modelo) {
         return "redirect:/login";
     }
 
+
     modelo.addAttribute("usuario", usuario);
     modelo.addAttribute("preferencias", usuario.getPreferencia());
 

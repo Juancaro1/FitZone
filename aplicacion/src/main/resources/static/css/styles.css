@@ -1,8 +1,149 @@
 /*GENERAL*/
-
 * {
     margin: 0;
     padding: 0;
+}
+
+
+#map { height: 400px;
+    width: 400px;
+position: relative;}
+
+.navbar {
+    background-color: #208317;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+.collapse {
+    display: flex;
+    justify-content: end;
+    gap: 20px; /* Separar los enlaces */
+    font-size: 20px;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+.container-fluid{
+    background-color: transparent;
+}
+
+.logo1{
+    position: absolute;
+    margin-top: 15px;
+    left: 0;
+    width: 180px;
+    height: 180px;
+}
+
+.logo2{
+    margin-left: 100px;
+}
+
+.container-detalles{
+    height: 600px;
+    background-color: aqua;
+    position: relative;
+    margin-left: 50px;
+}
+
+.img-fluid{
+    width: 400px;
+    height: 400px;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.nombre-localizacion{
+    position: absolute;
+    left: 500px;
+    top: 70px;
+}
+
+.direccion{
+    margin-left: 20px;
+    background-color: #208317;
+}
+
+.descripcion{
+    margin-top: 40px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+
+
+
+
+.footer {
+    background-color: #208317; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    padding: 15px 0;
+    height: 80px;
+    border-top: 2px solid #555; /* Línea decorativa */
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer .social-icons a {
+    font-size: 24px; /* Tamaño de los íconos */
+    color: white; /* Color inicial de los íconos */
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #00aced; /* Cambia de color al pasar el cursor (azul claro) */
+}
+
+
+
+
+.container-localizaciones {
+    margin-top: 50px;
+    margin-left: 5%;
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+.card {
+    margin-top: 20px;
+    margin-left: 70px;
+    width: 18rem;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: #f8f9fa;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 2);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     font-family: "Lexend-Medium", sans-serif;
     box-sizing: border-box;
 }

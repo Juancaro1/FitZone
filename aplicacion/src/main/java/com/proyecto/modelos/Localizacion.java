@@ -31,12 +31,21 @@ public class Localizacion {
     @OneToMany(mappedBy = "localizaciones")
     private List<Resena> resenas;
 
+    private String descripcion;
+
+    private String imagen;
+
+    private int fotos;
+
     public Localizacion(Long id,  String nombre, String direccion, List<Resena> resenas, float cordX, float cordY) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.resenas = resenas;
+        this.cordX = cordX;
+        this.cordY = cordY;
     }
+
     public Localizacion() {
         this.id = 0l;
         this.nombre = "";
@@ -44,6 +53,31 @@ public class Localizacion {
         this.resenas = null;
         this.cordX = 0;
         this.cordY = 0;
+    }
+
+
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public int getFotos(){
+        return this.fotos;
+    }
+
+    public void setFotos(int fotos){
+        this.fotos = fotos;
     }
 
     public void setCordX(float cordX){

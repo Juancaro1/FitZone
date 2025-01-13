@@ -41,7 +41,12 @@ public class Usuario {
 
     @NotBlank(message= "Este campo es obligatorio.")
     @Size(min = 3, message = "Debe contener al menos 3 caracteres.")
+
     private String genero;
+
+    private String preferencia;
+
+    private String imagen;
 
     @Transient
     private String confirmarClave;
@@ -49,8 +54,11 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Resena> resenas;
 
+    private String sobreMi;
 
-    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero) {
+
+
+    public Usuario(Long id, String nombre, String apellido, String email, String clave, String confirmarClave, List<Resena> resenas, String genero, String sobremi, String preferencia, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -59,6 +67,8 @@ public class Usuario {
         this.confirmarClave = confirmarClave;
         this.resenas = resenas;
         this.genero = genero;
+        this.preferencia = preferencia;
+        this.imagen = imagen;
     }
 
     public Usuario() {
@@ -70,10 +80,39 @@ public class Usuario {
         this.confirmarClave = "";
         this.resenas = null;
         this.genero = "";
+        this.preferencia = "";
+        this.imagen = "";
     }
 
 
 
+    public String getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+
+    public String getPreferencia() {
+        return this.preferencia;
+    }
+
+    public void setPreferencia(String preferencia) {
+        this.preferencia = preferencia;
+    }
+
+
+
+    public String getSobreMi() {
+        return this.sobreMi;
+    }
+
+    public void setSobreMi(String sobreMi) {
+        this.sobreMi = sobreMi;
+    }
+    
     public String getGenero() {
         return this.genero;
     }
@@ -138,7 +177,6 @@ public class Usuario {
     public void setResenas(List<Resena> resenas) {
         this.resenas = resenas;
     }
-
 
 
 }

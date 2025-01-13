@@ -1,6 +1,7 @@
 package com.proyecto.servicios;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,21 @@ public class ServiciosUsuarios {
         this.repositorioUsuarios.deleteById(id);
     }
 
-    //Validamos en el registro si coinciden las contrasenas 
+    public void eliminarUsuarioPorEmail(String email){
+        this.repositorioUsuarios.findByEmail(email);
+    }
+
+    public Usuario actualizarPreferencia(Usuario usuario){
+        return this.repositorioUsuarios.save(usuario);
+    }
+
+    public String mostrarPreferencia(Long id){
+        Usuario usuario = this.repositorioUsuarios.findById(id)
+            .orElseThrow(() -> new NoSuchElementException("Usuario no encontrado con id: " + id));
+    return usuario.getPreferencia();
+    }
+
+    
 	public BindingResult validarRegistro(BindingResult validaciones, Usuario usuario) {
 		if(!usuario.getClave().equals(usuario.getConfirmarClave())) {
 			validaciones.rejectValue("confirmarClave", "clavedNoCoincide", "Las contrasenas no coinciden.");
@@ -51,7 +66,7 @@ public class ServiciosUsuarios {
 		return validaciones;
 	}
 	
-	//Validamos en el login si encontramos el email de usuario Y si coinciden las contrasenas
+	
 	public BindingResult validarLogin(BindingResult validaciones, LoginUsuario usuario) {
 		Usuario usuarioDb = this.obtenerPorEmail(usuario.getEmail());
 		if(usuarioDb == null) {

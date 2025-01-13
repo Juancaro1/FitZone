@@ -1,5 +1,7 @@
 package com.proyecto.controladores;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proyecto.modelos.Localizacion;
+import com.proyecto.modelos.Resena;
 import com.proyecto.servicios.ServicioLocalizaciones;
 import com.proyecto.servicios.ServiciosUsuarios;
 
@@ -31,15 +36,20 @@ public class ControladorLocalizaciones {
 	
 	@GetMapping("/localizaciones")
 	public String localizaciones(HttpSession sesion, Model modelo) {
-		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
-		if (idUsuario == null) {
-			return "redirect:/login";
-		}
-		List<Localizacion> localizaciones = this.servicioLocalizaciones.obtenerTodas();
-		modelo.addAttribute("localizaciones", localizaciones);
-		modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(idUsuario));
-		return "localizaciones";
-	}
+    Long idUsuario = (Long) sesion.getAttribute("idUsuario");
+    if (idUsuario == null) {
+        return "redirect:/login";
+    }
+
+    List<Localizacion> localizaciones = this.servicioLocalizaciones.obtenerTodas();
+    
+    modelo.addAttribute("localizaciones", localizaciones);
+    modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(idUsuario));
+    return "localizaciones";
+}
+
+
+
 	
 	@GetMapping("/localizaciones/detalle/{id}")
 	public String detalleLocalizacion(HttpSession sesion, Model modelo,
@@ -49,14 +59,14 @@ public class ControladorLocalizaciones {
 			return "redirect:/login";
 		}
 		
-		Localizacion localizacion = null;
-		try {
-			localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
-			modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(idUsuario));
-			modelo.addAttribute("localizacion", localizacion);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		Localizacion localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(id);
+		modelo.addAttribute("usuario", this.serviciosUsuarios.obtenerPorId(id));
+		modelo.addAttribute("localizacion", localizacion);
+
+		Resena nuevaResena = new Resena();
+		nuevaResena.setLocalizaciones(localizacion);
+		modelo.addAttribute("resena", nuevaResena);
+		
 		return "detalleLocalizacion";
 	}
 	
@@ -72,15 +82,45 @@ public class ControladorLocalizaciones {
 	
 	@PostMapping("/guardar")
 	public String guardarLocalizacion(HttpSession sesion,
-			@Valid @ModelAttribute("localizacion") Localizacion localizacion,
-			BindingResult validaciones) {
-		Long idUsuario = (Long) sesion.getAttribute("idUsuario");
-		if (idUsuario == null) {
-			return "redirect:/login";
-		}
-		this.servicioLocalizaciones.crearLocalizacion(localizacion);
-		return "redirect:/localizaciones";
-	}
+        @Valid @ModelAttribute("localizacion") Localizacion localizacion,
+        BindingResult validaciones,
+        @RequestParam("imagen") MultipartFile imagen) {
+    Long idUsuario = (Long) sesion.getAttribute("idUsuario");
+    if (idUsuario == null) {
+        return "redirect:/login";
+    }
+    if (!imagen.isEmpty()) {
+        try {
+            String uploadDir = "C:/Localizaciones/imagenesLocalizaciones/";
+            String imagenNombre = imagen.getOriginalFilename();
+
+            File uploadFile = new File(uploadDir + imagenNombre);
+            imagen.transferTo(uploadFile);
+            localizacion.setImagen(imagenNombre);
+        } catch (IOException e) {
+            e.printStackTrace();
+            validaciones.rejectValue("imagen", "error.imagen", "Hubo un error al guardar la imagen.");
+        }
+    }
+    this.servicioLocalizaciones.crearLocalizacion(localizacion);
+
+    return "redirect:/localizaciones";
+}
+
+@GetMapping("/localizaciones/buscar")
+public String buscarLocalizaciones(HttpSession sesion, Model modelo, 
+        @RequestParam("nombre") String nombre) {
+    Long idUsuario = (Long) sesion.getAttribute("idUsuario");
+    if (idUsuario == null) {
+        return "redirect:/login";
+    }
+
+    List<Localizacion> localizaciones = servicioLocalizaciones.buscarPorNombre(nombre);
+    modelo.addAttribute("localizaciones", localizaciones);
+    modelo.addAttribute("usuario", serviciosUsuarios.obtenerPorId(idUsuario));
+    return "localizaciones";
+}
+
 	
 	@GetMapping("/localizaciones/editar/{id}")
 	public String editarLocalizacion(HttpSession sesion, Model modelo,

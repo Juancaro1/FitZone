@@ -35,6 +35,8 @@ public class Localizacion {
 
     private String imagen;
 
+    private int fotos;
+
     public Localizacion(Long id,  String nombre, String direccion, List<Resena> resenas, float cordX, float cordY) {
         this.id = id;
         this.nombre = nombre;
@@ -43,6 +45,7 @@ public class Localizacion {
         this.cordX = cordX;
         this.cordY = cordY;
     }
+
     public Localizacion() {
         this.id = 0l;
         this.nombre = "";
@@ -69,6 +72,13 @@ public class Localizacion {
         this.imagen = imagen;
     }
 
+    public int getFotos(){
+        return this.fotos;
+    }
+
+    public void setFotos(int fotos){
+        this.fotos = fotos;
+    }
 
     public void setCordX(float cordX){
         this.cordX = cordX;

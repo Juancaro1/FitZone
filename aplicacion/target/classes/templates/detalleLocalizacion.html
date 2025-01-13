@@ -13,8 +13,21 @@
     <title>Ubicacion</title>
 </head>
 <body>
-    <nav>
-
+    <nav class="col-12 barraNav">
+        <div class="col-6 logosFitzone">
+            <img class="logo1" th:src="@{/img/logo.png}"/>
+            <img class="logo2" th:src="@{/img/4.png}"/>
+        </div>
+        <div class="col-6 opcionesNav">
+            <button class="collapsible" type="button" th:src="@{/img/collapse.png}">
+                <img th:src="@{/img/collapse.png}">
+            </button>
+            <div class="content">
+                <a class="linkNav" th:href="@{/localizaciones/agregar}">Anadir spot</a>
+                <a class="linkNav" th:href="@{/perfil}">Mi Perfil</a>
+                <a class="linkNav" th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
     </nav>
 
 
@@ -138,6 +151,6 @@
     <footer>
 
     </footer>
-    <script th:src="@{/js/index.js}"></script>
+    <script th:src="@{/js/detalleLocalizacion.js}"></script>
 </body>
 </html>

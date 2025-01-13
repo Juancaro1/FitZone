@@ -35,13 +35,70 @@
 
 body {
     overflow-y: scroll;
+    background: rgb(59,155,49);
+    background: linear-gradient(0deg, rgba(59,155,49,1) 0%, rgba(98,224,84,1) 66%);
 }
-
-
 
 #map{
     width: 100%; 
     height: 300px;
+}
+
+/*NAV*/
+.barraNav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  background-color: #208317;
+}
+
+.logosFitzone{
+  display:flex;
+  align-items: center;
+}
+
+.barraNav img{
+  max-height: 75px;
+  padding-left: 20px;
+  align-self: center;
+}
+
+.collapsible{
+  border: none;
+  background: none;
+}
+
+.collapsible:hover{
+  opacity: 50%;
+}
+
+.collapsible img{
+  height: 65px;
+}
+
+.opcionesNav{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: right;
+}
+
+.linkNav {
+  font-size: larger;
+  padding-right: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.linkNav:hover {
+  color: red;
+}
+
+.content {
+  display: none;
+  overflow: hidden;
 }
 
 /*CUERPO*/

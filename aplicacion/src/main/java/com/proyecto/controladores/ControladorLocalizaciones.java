@@ -64,7 +64,7 @@ public class ControladorLocalizaciones {
 		modelo.addAttribute("localizacion", localizacion);
 
 		Resena nuevaResena = new Resena();
-		nuevaResena.setLocalizaciones(localizacion);
+		nuevaResena.setLocalizacion(localizacion);;
 		modelo.addAttribute("resena", nuevaResena);
 		
 		return "detalleLocalizacion";

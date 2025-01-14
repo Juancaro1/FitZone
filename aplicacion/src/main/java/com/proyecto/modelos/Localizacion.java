@@ -28,7 +28,7 @@ public class Localizacion {
 
     private float cordY;
     
-    @OneToMany(mappedBy = "localizaciones")
+    @OneToMany(mappedBy = "localizacion")
     private List<Resena> resenas;
 
     private String descripcion;

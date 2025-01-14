@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.proyecto.modelos.Localizacion;
 import com.proyecto.modelos.Resena;
-import com.proyecto.servicios.ServicioResena;
 import com.proyecto.servicios.ServicioLocalizaciones;
+import com.proyecto.servicios.ServicioResena;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -28,14 +28,10 @@ public class ControladorResena {
 		if (idUsuario == null) {
             return "redirect:/login";
         }
-
-            // Recuperar la localización usando el ID enviado desde el formulario
-    Localizacion localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(resena.getLocalizaciones().getId());
+    Localizacion localizacion = this.servicioLocalizaciones.obtenerLocalizacionPorId(resena.getLocalizacion().getId());
     
-    // Asignar usuario y localización a la reseña
-    resena.setLocalizaciones(localizacion);
+    resena.setLocalizacion(localizacion);
 
-    // Guardar la reseña
     this.servicioResena.crearResena(resena, idUsuario);
 
     return "redirect:/localizaciones/detalle/" + localizacion.getId();

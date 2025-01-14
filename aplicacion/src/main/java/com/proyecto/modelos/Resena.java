@@ -32,7 +32,7 @@ public class Resena {
 
     @ManyToOne
     @JoinColumn(name = "id_localizacion", nullable = false)
-    private Localizacion localizaciones;
+    private Localizacion localizacion;
 
 
     public Resena(Long id, Usuario usuario, int puntuacion, String comentario, Localizacion localizaciones) {
@@ -40,7 +40,7 @@ public class Resena {
         this.usuario = usuario;
         this.puntuacion = puntuacion;
         this.comentario = comentario;
-        this.localizaciones = localizaciones;
+        this.localizacion = localizaciones;
     }
 
     public Resena() {
@@ -48,17 +48,18 @@ public class Resena {
         this.usuario = null;
         this.puntuacion = 0;
         this.comentario = "";
-        this.localizaciones = null;
+        this.localizacion = null;
     }
 
 
-    public Localizacion getLocalizaciones() {
-        return this.localizaciones;
+    public Localizacion getLocalizacion() {
+        return this.localizacion;
     }
 
-    public void setLocalizaciones(Localizacion localizaciones) {
-        this.localizaciones = localizaciones;
+    public void setLocalizacion(Localizacion localizacion) {
+        this.localizacion = localizacion;
     }
+
 
 
     public Long getId() {

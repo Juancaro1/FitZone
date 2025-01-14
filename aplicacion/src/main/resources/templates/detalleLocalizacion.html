@@ -61,7 +61,7 @@
                         <input type="radio" th:field="*{puntuacion}" value="1" id="sel-rating-1"><label for="sel-rating-1">1</label>
                     </div>
                     <textarea id="comentario" th:field="*{comentario}" class="form-control" rows="2" style="resize:none;"></textarea>
-                    <input type="hidden" th:field="*{localizaciones.id}" th:value="${localizacion.id}" /> 
+                    <input type="hidden" th:field="*{localizacion.id}" th:value="${localizacion.id}" /> 
                     <input class="botonAgregar" type="submit" value="Agregar Comentario"/>
                 </form>
             </div>
